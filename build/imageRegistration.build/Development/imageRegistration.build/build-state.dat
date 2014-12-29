@@ -1,0 +1,424 @@
+TimageRegistration
+v7
+r0
+t315251631.405189
+cCheck dependencies
+cCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o /Users/gbohus/Documents/projects/imageRegistration/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o /Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o /Users/gbohus/Documents/projects/imageRegistration/ppm.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o /Users/gbohus/Documents/projects/imageRegistration/utilities.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+cLd /Users/gbohus/Documents/projects/imageRegistration/build/Development/imageRegistration normal i386
+
+N/Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp
+c000000004D18B52A0000000000002AB5
+t1293464874
+s10933
+i<iostream>
+i<stdlib.h>
+i"Optimizer.h"
+i"ppm.h"
+i"utilities.h"
+i"math.h"
+
+N/Users/gbohus/Documents/projects/imageRegistration/Optimizer.h
+c000000004C55CA9E000000000000032B
+t1280690846
+s811
+i<vector>
+
+N/Users/gbohus/Documents/projects/imageRegistration/build/Development/imageRegistration
+t1293558831
+s235200
+
+N/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o
+t1293558827
+s317432
+
+N/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/imageRegistration.LinkFileList
+c000000004C55CA320000000000000249
+t1280690738
+s585
+
+N/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o
+t1293558827
+s251732
+
+N/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o
+t1293558829
+s389020
+
+N/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o
+t1293475276
+s28044
+
+N/Users/gbohus/Documents/projects/imageRegistration/main.cpp
+c000000004D18DD5F00000000000009DA
+t1293475167
+s2522
+i<iostream>
+i<fstream>
+i<string>
+i<vector>
+i"ppm.h"
+i"Optimizer.h"
+i"utilities.h"
+
+N/Users/gbohus/Documents/projects/imageRegistration/ppm.cpp
+c000000004D1A24240000000000003A9B
+t1293558820
+s15003
+i"ppm.h"
+i"utilities.h"
+i"math.h"
+i<iostream>
+i<fstream>
+i<sstream>
+
+N/Users/gbohus/Documents/projects/imageRegistration/ppm.h
+c000000004D1A24250000000000000FC4
+t1293558821
+s4036
+i<string>
+i<iostream>
+i<vector>
+
+N/Users/gbohus/Documents/projects/imageRegistration/utilities.cpp
+c000000004C55CAF60000000000000269
+t1280690934
+s617
+i<string>
+
+N/Users/gbohus/Documents/projects/imageRegistration/utilities.h
+c000000004D18F45500000000000003E4
+t1293481045
+s996
+i<vector>
+i<assert.h>
+
+N/Users/gbohus/projects/imageRegistration/Optimizer.cpp
+c000000004C3A05AD00000000000029E9
+t1278870957
+s10729
+i<iostream>
+i<stdlib.h>
+i"Optimizer.h"
+i"ppm.h"
+i"utilities.h"
+i"math.h"
+
+N/Users/gbohus/projects/imageRegistration/Optimizer.h
+c000000004C389EA30000000000000325
+t1278779043
+s805
+i<vector>
+
+N/Users/gbohus/projects/imageRegistration/build/Development/imageRegistration
+t1279136360
+s166176
+
+N/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o
+t1279135855
+s292124
+
+N/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/imageRegistration.LinkFileList
+c000000004C3E0FF20000000000000221
+t1279135730
+s545
+
+N/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o
+t1279136359
+s73516
+
+N/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o
+t1279135855
+s257228
+
+N/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o
+t1279135750
+s28024
+
+N/Users/gbohus/projects/imageRegistration/main.cpp
+c000000004C3E1266000000000000052E
+t1279136358
+s1326
+i<iostream>
+i<fstream>
+i<string>
+i"ppm.h"
+i"Optimizer.h"
+i"utilities.h"
+
+N/Users/gbohus/projects/imageRegistration/ppm.cpp
+c000000004C38BC74000000000000158A
+t1278786676
+s5514
+i"ppm.h"
+i"utilities.h"
+i"math.h"
+i<iostream>
+i<fstream>
+i<sstream>
+
+N/Users/gbohus/projects/imageRegistration/ppm.h
+c000000004C38B8300000000000000700
+t1278785584
+s1792
+i<string>
+i<vector>
+
+N/Users/gbohus/projects/imageRegistration/utilities.cpp
+c000000004C3E1006000000000000024D
+t1279135750
+s589
+
+N/Users/gbohus/projects/imageRegistration/utilities.h
+c000000004C3E106D00000000000003E9
+t1279135853
+s1001
+i<vector>
+i<assert.h>
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp
+c000000004D18B52A0000000000002AB5
+t1293464874
+s10933
+i<iostream>
+i<stdlib.h>
+i"Optimizer.h"
+i"ppm.h"
+i"utilities.h"
+i"math.h"
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/Optimizer.h
+c000000004C55CA9E000000000000032B
+t1280690846
+s811
+i<vector>
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/build/Development/imageRegistration
+t1293558831
+s235200
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o
+t1293558827
+s317432
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/imageRegistration.LinkFileList
+c000000004C55CA320000000000000249
+t1280690738
+s585
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o
+t1293558827
+s251732
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o
+t1293558829
+s389020
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o
+t1293475276
+s28044
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/main.cpp
+c000000004D18DD5F00000000000009DA
+t1293475167
+s2522
+i<iostream>
+i<fstream>
+i<string>
+i<vector>
+i"ppm.h"
+i"Optimizer.h"
+i"utilities.h"
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/ppm.cpp
+c000000004D1A24240000000000003A9B
+t1293558820
+s15003
+i"ppm.h"
+i"utilities.h"
+i"math.h"
+i<iostream>
+i<fstream>
+i<sstream>
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/ppm.h
+c000000004D1A24250000000000000FC4
+t1293558821
+s4036
+i<string>
+i<iostream>
+i<vector>
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/utilities.cpp
+c000000004C55CAF60000000000000269
+t1280690934
+s617
+i<string>
+
+N/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/utilities.h
+c000000004D18F45500000000000003E4
+t1293481045
+s996
+i<vector>
+i<assert.h>
+
+N/usr/include/assert.h
+c000000004AC59C810000000000000DCB
+t1254464641
+s3531
+
+N/usr/include/math.h
+c000000004AC599B500000000000004F1
+t1254463925
+s1265
+
+N/usr/include/stdlib.h
+c000000004AC59C820000000000002DF5
+t1254464642
+s11765
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies315251621#315251622#0(0"0(0#1#0"8622594496#0"0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o /Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s315251621.798626
+e315251627.887026
+r1
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o
+x/Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@72"Compile /Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp315251621#315251627#0(0"0(0#0#64"/Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp8621247648#1086"    cd /Users/gbohus/Documents/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/Documents/projects/imageRegistration/build/Development -I/Users/gbohus/Documents/projects/imageRegistration/build/Development/include -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp -o /Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o /Users/gbohus/projects/imageRegistration/Optimizer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s300828653.379553
+e300828655.217688
+r1
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o
+x/Users/gbohus/projects/imageRegistration/Optimizer.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/gbohus/projects/imageRegistration/Optimizer.cpp300828653#300828655#0(0"0(0#0#54"/Users/gbohus/projects/imageRegistration/Optimizer.cpp8619463168#1006"    cd /Users/gbohus/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/projects/imageRegistration/build/Development -I/Users/gbohus/projects/imageRegistration/build/Development/include -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/projects/imageRegistration/Optimizer.cpp -o /Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/Optimizer.o /Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/Optimizer.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o /Users/gbohus/Documents/projects/imageRegistration/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s315251621.754928
+e315251627.343460
+r1
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o
+x/Users/gbohus/Documents/projects/imageRegistration/main.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@67"Compile /Users/gbohus/Documents/projects/imageRegistration/main.cpp315251621#315251627#0(0"0(0#0#59"/Users/gbohus/Documents/projects/imageRegistration/main.cpp8622286176#1076"    cd /Users/gbohus/Documents/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/Documents/projects/imageRegistration/build/Development -I/Users/gbohus/Documents/projects/imageRegistration/build/Development/include -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/Documents/projects/imageRegistration/main.cpp -o /Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o /Users/gbohus/projects/imageRegistration/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s300829159.973324
+e300829159.974629
+r1
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o
+x/Users/gbohus/projects/imageRegistration/main.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@57"Compile /Users/gbohus/projects/imageRegistration/main.cpp300829159#300829160#0(0"0(0#0#49"/Users/gbohus/projects/imageRegistration/main.cpp8620447776#996"    cd /Users/gbohus/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/projects/imageRegistration/build/Development -I/Users/gbohus/projects/imageRegistration/build/Development/include -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/projects/imageRegistration/main.cpp -o /Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o /Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o /Users/gbohus/Documents/projects/imageRegistration/ppm.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s315251627.343718
+e315251630.100156
+r1
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o
+x/Users/gbohus/Documents/projects/imageRegistration/ppm.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@66"Compile /Users/gbohus/Documents/projects/imageRegistration/ppm.cpp315251627#315251630#0(0"0(0#0#58"/Users/gbohus/Documents/projects/imageRegistration/ppm.cpp8622748448#1074"    cd /Users/gbohus/Documents/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/Documents/projects/imageRegistration/build/Development -I/Users/gbohus/Documents/projects/imageRegistration/build/Development/include -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/Documents/projects/imageRegistration/ppm.cpp -o /Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o /Users/gbohus/projects/imageRegistration/ppm.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s300828654.345005
+e300828655.678216
+r1
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o
+x/Users/gbohus/projects/imageRegistration/ppm.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@56"Compile /Users/gbohus/projects/imageRegistration/ppm.cpp300828654#300828655#0(0"0(0#0#48"/Users/gbohus/projects/imageRegistration/ppm.cpp8621132800#994"    cd /Users/gbohus/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/projects/imageRegistration/build/Development -I/Users/gbohus/projects/imageRegistration/build/Development/include -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/projects/imageRegistration/ppm.cpp -o /Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/ppm.o /Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/ppm.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o /Users/gbohus/Documents/projects/imageRegistration/utilities.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s315168076.479013
+e315168076.839619
+r1
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o
+x/Users/gbohus/Documents/projects/imageRegistration/utilities.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@72"Compile /Users/gbohus/Documents/projects/imageRegistration/utilities.cpp315168076#315168076#0(0"0(0#0#64"/Users/gbohus/Documents/projects/imageRegistration/utilities.cpp8604360192#1086"    cd /Users/gbohus/Documents/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/Documents/projects/imageRegistration/build/Development -I/Users/gbohus/Documents/projects/imageRegistration/build/Development/include -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/Documents/projects/imageRegistration/utilities.cpp -o /Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o /Users/gbohus/projects/imageRegistration/utilities.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s300828552.400583
+e300828552.401765
+r1
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o
+x/Users/gbohus/projects/imageRegistration/utilities.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@62"Compile /Users/gbohus/projects/imageRegistration/utilities.cpp300828552#300828552#0(0"0(0#0#54"/Users/gbohus/projects/imageRegistration/utilities.cpp8619068288#1006"    cd /Users/gbohus/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/projects/imageRegistration/build/Development -I/Users/gbohus/projects/imageRegistration/build/Development/include -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/projects/imageRegistration/utilities.cpp -o /Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/utilities.o /Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/utilities.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+r0
+
+CLd /Users/gbohus/Documents/projects/imageRegistration/build/Development/imageRegistration normal i386
+s315251630.100334
+e315251631.405133
+r1
+xLd
+x/Users/gbohus/Documents/projects/imageRegistration/build/Development/imageRegistration
+xnormal
+xi386
+lSLF07#2@91"Link /Users/gbohus/Documents/projects/imageRegistration/build/Development/imageRegistration315251630#315251631#0(0"0(0#0#0"8601131616#510"    cd /Users/gbohus/Documents/projects/imageRegistration    /Developer/usr/bin/g++-4.2 -arch i386 -L/Users/gbohus/Documents/projects/imageRegistration/build/Development -F/Users/gbohus/Documents/projects/imageRegistration/build/Development -filelist /Users/gbohus/Documents/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/imageRegistration.LinkFileList -o /Users/gbohus/Documents/projects/imageRegistration/build/Development/imageRegistration0#
+
+CLd /Users/gbohus/projects/imageRegistration/build/Development/imageRegistration normal i386
+s300829159.974959
+e300829160.020884
+r1
+xLd
+x/Users/gbohus/projects/imageRegistration/build/Development/imageRegistration
+xnormal
+xi386
+lSLF07#2@81"Link /Users/gbohus/projects/imageRegistration/build/Development/imageRegistration300829159#300829160#0(0"0(0#0#0"8620184640#460"    cd /Users/gbohus/projects/imageRegistration    /Developer/usr/bin/g++-4.2 -arch i386 -L/Users/gbohus/projects/imageRegistration/build/Development -F/Users/gbohus/projects/imageRegistration/build/Development -filelist /Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/imageRegistration.LinkFileList -o /Users/gbohus/projects/imageRegistration/build/Development/imageRegistration0#
+
+CLd /Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/build/Development/imageRegistration normal i386
+r0
+

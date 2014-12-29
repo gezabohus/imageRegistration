@@ -1,0 +1,67 @@
+TimageRegistration
+v7
+r0
+t300478274.724910
+cCheck dependencies
+cCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o /Users/gbohus/projects/imageRegistration/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+
+N/Users/gbohus/projects/imageRegistration/Optimizer.h
+c000000004C389EA30000000000000325
+t1278779043
+s805
+i<vector>
+
+N/Users/gbohus/projects/imageRegistration/build/Development/imageRegistration
+t2
+s0
+
+N/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/imageRegistration.LinkFileList
+c000000004C38B7C10000000000000086
+t1278785473
+s134
+
+N/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Users/gbohus/projects/imageRegistration/main.cpp
+c000000004C389EA6000000000000045E
+t1278779046
+s1118
+i"ppm.h"
+i"Optimizer.h"
+i<iostream>
+i<fstream>
+i<string>
+
+N/Users/gbohus/projects/imageRegistration/ppm.h
+c000000004C389EA400000000000006FF
+t1278779044
+s1791
+i<string>
+i<vector>
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies300478273#300478273#0(0"0(0#1#0"7599578554898674688#0"0#
+
+CCompileC build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o /Users/gbohus/projects/imageRegistration/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
+s300478273.593385
+e300478274.724798
+r0
+xCompileC
+xbuild/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o
+x/Users/gbohus/projects/imageRegistration/main.cpp
+xnormal
+xi386
+xc++
+xcom.apple.compilers.gcc.4_2
+oIn file included from /Users/gbohus/projects/imageRegistration/main.cpp:1:
+o/Users/gbohus/projects/imageRegistration/ppm.h:49: error: extra qualification 'imageRegistration::ppm::' on member 'corr'
+o/Users/gbohus/projects/imageRegistration/ppm.h:58: error: a class-key must be used when declaring a friend
+o/Users/gbohus/projects/imageRegistration/ppm.h:58: error: friend declaration does not name a class or function
+lSLF07#2@57"Compile /Users/gbohus/projects/imageRegistration/main.cpp300478273#300478274#0(415"In file included from /Users/gbohus/projects/imageRegistration/main.cpp:1:/Users/gbohus/projects/imageRegistration/ppm.h:49: error: extra qualification 'imageRegistration::ppm::' on member 'corr'/Users/gbohus/projects/imageRegistration/ppm.h:58: error: a class-key must be used when declaring a friend/Users/gbohus/projects/imageRegistration/ppm.h:58: error: friend declaration does not name a class or function3(4@63"Extra qualification 'imageRegistration::ppm::' on member 'corr'300478274#75#122#2(7@71"In file included from /Users/gbohus/projects/imageRegistration/main.cpp300478274#18446744073709551615#0#0(6@49"/Users/gbohus/projects/imageRegistration/main.cpp300471846#1#0#1#0#0"0(13@113"Extra qualification 'imageRegistration::ppm::' on member 'corr' in /Users/gbohus/projects/imageRegistration/ppm.h300478274#18446744073709551615#0#0(6@46"/Users/gbohus/projects/imageRegistration/ppm.h300471844#49#0#49#0#0"0(6@46"/Users/gbohus/projects/imageRegistration/ppm.h300471844#49#0#49#0#0"0(4@48"A class-key must be used when declaring a friend300478274#197#107#2(7@71"In file included from /Users/gbohus/projects/imageRegistration/main.cpp300478274#18446744073709551615#0#0(6@49"/Users/gbohus/projects/imageRegistration/main.cpp300471846#1#0#1#0#0"0(13@98"A class-key must be used when declaring a friend in /Users/gbohus/projects/imageRegistration/ppm.h300478274#18446744073709551615#0#0(6@46"/Users/gbohus/projects/imageRegistration/ppm.h300471844#58#0#58#0#0"0(6@46"/Users/gbohus/projects/imageRegistration/ppm.h300471844#58#0#58#0#0"0(4@52"Friend declaration does not name a class or function300478274#304#111#2(7@71"In file included from /Users/gbohus/projects/imageRegistration/main.cpp300478274#18446744073709551615#0#0(6@49"/Users/gbohus/projects/imageRegistration/main.cpp300471846#1#0#1#0#0"0(13@102"Friend declaration does not name a class or function in /Users/gbohus/projects/imageRegistration/ppm.h300478274#18446744073709551615#0#0(6@46"/Users/gbohus/projects/imageRegistration/ppm.h300471844#58#0#58#0#0"0(6@46"/Users/gbohus/projects/imageRegistration/ppm.h300471844#58#0#58#0#0"0(0#0#49"/Users/gbohus/projects/imageRegistration/main.cpp8316291871788066816#996"    cd /Users/gbohus/projects/imageRegistration    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/imageRegistration.hmap -F/Users/gbohus/projects/imageRegistration/build/Development -I/Users/gbohus/projects/imageRegistration/build/Development/include -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources/i386 -I/Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/DerivedSources -c /Users/gbohus/projects/imageRegistration/main.cpp -o /Users/gbohus/projects/imageRegistration/build/imageRegistration.build/Development/imageRegistration.build/Objects-normal/i386/main.o1#
+
+CLd /Users/gbohus/projects/imageRegistration/build/Development/imageRegistration normal i386
+r0
+
