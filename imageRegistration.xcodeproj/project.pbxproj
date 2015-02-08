@@ -32,6 +32,7 @@
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* imageRegistration */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = imageRegistration; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* imageRegistration.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = imageRegistration.1; sourceTree = "<group>"; };
+		F81F5F3A1A861F4A00A49BDA /* ToDo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
 		F81F898911E8EFDD00AAE1BF /* Optimizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Optimizer.cpp; sourceTree = "<group>"; };
 		F81F898A11E8EFDD00AAE1BF /* Optimizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Optimizer.h; sourceTree = "<group>"; };
 		F81F898B11E8EFDD00AAE1BF /* ppm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ppm.cpp; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 				F81F898B11E8EFDD00AAE1BF /* ppm.cpp */,
 				F88C362C1A4ECE0A006D211C /* transformation.h */,
 				F88C362D1A4ECE84006D211C /* transformation.cpp */,
+				F81F5F3A1A861F4A00A49BDA /* ToDo.h */,
 				F81F898D11E8EFDD00AAE1BF /* utilities.h */,
 				F880BBE311EE4741005A730B /* utilities.cpp */,
 			);
