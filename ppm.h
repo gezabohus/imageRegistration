@@ -84,7 +84,7 @@ namespace imageRegistration
   {
   public:
     /// Construct with one ppm to be scaled down.
-    ppmArray(ppm & image_, size_t minSize_);
+    ppmArray(const ppm & image_, size_t minSize_);
     ppmArray() {};
     ~ppmArray();
     /// Create all(!) scaled down versions of the original.
@@ -98,7 +98,7 @@ namespace imageRegistration
     
   private:
     size_t _minSize;
-    std::vector < ppm* > _pics;
+    std::vector < const ppm* > _pics;
     size_t _numLevels;
   };
 

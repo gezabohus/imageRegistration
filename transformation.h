@@ -20,7 +20,7 @@ class transformation
 {
 public:
   void setAngle(double angle_) { _angle = angle_; }
-  void setOrigin(std::pair < int, int > origin_) { _origin.first = origin_.first; _origin.second = origin_.second; }
+  void setOrigin(std::pair < int, int > origin_) { _origin.first = _origin.second = 0; }
   void setVector(std::pair < int, int > vector_) { _vector.first = vector_.first; _vector.second = vector_.second; }
   void setLevel(size_t level_) { _level = level_; }
   void setAll(double a_, int ox_, int oy_, int vx_, int vy_);
@@ -30,7 +30,7 @@ public:
   size_t getLevel() const { return _level; }
   void getTraf() { std::cout << _angle << ", (" << _origin.first << ", " << _origin.second << "), (" << _vector.first << ", " << _vector.second << ")\n"; }
   transformation( double angle_, std::pair < int , int > origin_, std::pair < int , int > vector_, size_t level_ ) :
-  _angle(angle_), _origin(origin_), _vector(vector_), _level(level_){ }
+  _angle(angle_), /*_origin(origin_),*/ _vector(vector_), _level(level_){ }
   // transformation();
   //    ~transformation();
 
@@ -48,11 +48,12 @@ public:
 
 private:
   double _angle;
-  /*static*/ std::pair < int, int > _origin;
+  static std::pair < int, int > _origin;
   std::pair < int, int > _vector;
   size_t _level;
 };
 
+/// Compute the correlation between the first and the transformed second image.
 double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, transformation transf_);
 
 transformation bruteForceBase(const ppm & firstPic, const ppm & secondPic);

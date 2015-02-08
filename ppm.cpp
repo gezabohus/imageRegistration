@@ -282,11 +282,11 @@ namespace imageRegistration
     _dataInt[point_.first][point_.second] = szin_;
   }
 
-  ppmArray::ppmArray(ppm & image_, size_t minSize_)
+  ppmArray::ppmArray(const ppm & image_, size_t minSize_)
   {
     // todo: needs rewrite, suboptimal use of vectors
     _minSize = minSize_;
-    std::vector < ppm* > pics(1, & image_);
+    std::vector < const ppm* > pics(1, & image_);
     size_t dummy = image_.getW() < image_.getH() ? image_.getW() : image_.getH();
     size_t numIter = 1;
     while ( (dummy /= 2) > _minSize )

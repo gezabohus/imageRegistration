@@ -14,12 +14,12 @@
 namespace imageRegistration
 {
   
-//  std::pair < int, int > transformation::_origin = std::pair < int, int >(0,0);
+std::pair < int, int > transformation::_origin = std::pair < int, int >(0,0);
 void transformation::setAll(double a_, int ox_, int oy_, int vx_, int vy_)
 {
   _angle = a_;
-  _origin.first = ox_;
-  _origin.second = oy_;
+//  _origin.first = ox_;
+//  _origin.second = oy_;
   _vector.first = vx_;
   _vector.second = vy_;
 }
@@ -123,8 +123,10 @@ void transformation::read(std::string fn_)
 
 double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, transformation transf_)
 {
-	drgb firstM(0), firstV(0), secondM(0), secondV(0), coVar(0), corr(0);
-	int howManyPoints = 0;
+  
+  // These will collect  (partial sums of) means and variances for the two images.
+  drgb firstM(0), firstV(0), secondM(0), secondV(0), coVar(0), corr(0);
+	int numPoints = 0;
 	for (size_t i = 0; i < secondPic.getH(); ++i)
 		for (size_t j = 0; j < secondPic.getW(); ++j)
 		{
@@ -147,22 +149,22 @@ double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, tr
         firstV  += firstPic.getColor(firstPoint) * firstPic.getColor(firstPoint);
         secondV += secondPic.getColor(secondPoint) * secondPic.getColor(secondPoint);
         coVar   += firstPic.getColor(firstPoint) * secondPic.getColor(secondPoint);
-        ++howManyPoints;
+        ++numPoints;
       }
 		}
-	if(howManyPoints == 0)
+	if(numPoints == 0)
 	{
-		std::cout << "A trafoban nincs metszet!!!\n";
+		std::cout << "The transformed image does not intersect the first image.\n";
 	}
 	else
 	{
-		firstM /= howManyPoints;
-		secondM /= howManyPoints;
-		firstV /= howManyPoints;
-		secondV /= howManyPoints;
+		firstM /= numPoints;
+		secondM /= numPoints;
+		firstV /= numPoints;
+		secondV /= numPoints;
 		firstV -= firstM * firstM;
 		secondV -= secondM * secondM;
-		coVar /= howManyPoints;
+		coVar /= numPoints;
 		coVar -= firstM * secondM;
 		corr = coVar;
 		corr.r /= pow((double) (firstV.r * secondV.r), 0.5);
@@ -174,8 +176,8 @@ double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, tr
 
 transformation bruteForceBase(const ppm & firstPic, const ppm & secondPic)
 {
-  const int originXmin = (int) secondPic.getH() / 2;
-  const int originYmin = (int) secondPic.getW() / 2;
+  const int originXmin = 0; //(int) secondPic.getH() / 2;
+  const int originYmin = 0; //(int) secondPic.getW() / 2;
   const int originXmax = originXmin + 1;
   const int originYmax = originYmin + 1;
   const int vectorXmin = -((int) secondPic.getH() / 5) - 1;
@@ -244,7 +246,9 @@ transformation oneStep (const ppm & firstPic, const ppm & secondPic, transformat
 	
 	for ( int vecx = trans.getVector().first - 1; vecx < trans.getVector().first + 2; ++vecx )
     for ( int vecy = trans.getVector().second - 1; vecy < trans.getVector().second + 2; ++vecy )
-      for ( double ang = -2 * anglestep; ang < 3 * anglestep; ang += anglestep / 2 )
+      // Since the best guess for the angle is the previous one, we start with that only go in the direction
+      // where there is an improvement. This takes some logic.
+      for ( double ang = bestAng -2 * anglestep; ang < bestAng + 3 * anglestep; ang += anglestep / 2 )
       {
         traf.setAngle(ang);
         traf.setOrigin(ori);
@@ -271,8 +275,8 @@ transformation findBest(ppm & firstPic, ppm & secondPic)
 	ppmArray secondPics(secondPic, 8);
 	size_t depth = firstPics.howManyLevels();
 	std::cout << depth << "   ";
-  firstPics.getLastPic().write("/tmp/1.ppm");
-  secondPics.getLastPic().write("/tmp/2.ppm");
+//  firstPics.getLastPic().write("/tmp/1.ppm");
+//  secondPics.getLastPic().write("/tmp/2.ppm");
 	transformation goodtraf = bruteForceBase(firstPics.getLastPic(), secondPics.getLastPic());
 	goodtraf.setLevel(depth-1);
 	for (size_t i = 1; (int) i < (int) depth; ++i)

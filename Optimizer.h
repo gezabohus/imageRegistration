@@ -15,13 +15,13 @@ namespace imageRegistration
     Optimizer(const ppm & l_, const ppm & r_);
     ~Optimizer(void);
     
-    /// Very specialized search function. Looks at one predefined area of the first 
-    /// image (selected by where_) and looks for the most similar area in the second image. 
-    size_t search (size_t where_[2], std::vector < int > & holmax_, double & var_);
+//    /// Very specialized search function. Looks at one predefined area of the first 
+//    /// image (selected by where_) and looks for the most similar area in the second image. 
+//    size_t search (size_t where_[2], std::vector < int > & holmax_, double & var_);
     
-    void search (std::vector < std::vector < int > > & holmax_, std::vector < double > & var_);
+//    void search (std::vector < std::vector < int > > & holmax_, std::vector < double > & var_);
     void searchForMatch (std::vector < int > & holmax_, size_t radius_, std::vector < int > & holmax2_, double & mennyimax_);
-    ppm positioner (void);
+//    ppm positioner (void);
     void setSize (int n_);
     void setMargin (int n_);
     
