@@ -57,6 +57,8 @@ namespace imageRegistration
     /// Read image data from filename_
     void operator= (const std::string & filename_);
     
+    void setSize(size_t width, size_t height);
+
     /// Swap in the image data from otherImage_ using vector swap, ie for cheap
     void swap(ppm & otherImage_);
 
@@ -67,16 +69,21 @@ namespace imageRegistration
     size_t read(const std::string & filename_); 
     size_t write(const std::string & filename_) const;
     drgb getColor( std::vector< int > point ) const;
+    drgb getColor( int x, int y ) const;
     void hulyeszin();
     void reWritePoint(std::pair <int, int> point_, drgb szin_);
+    
 
     const std::vector< std::vector<drgb> > & getData(){return _dataInt;}
+    
+    const std::string & getName() const {return _fileName;};
     
     friend class Optimizer;
   private:
     size_t _w, _h; // width, height
     std::vector< std::vector<drgb> > _dataInt; // picture data
     static std::string _magicword;
+    std::string _fileName;
   };
 
   /// Holds an array of ppms. The intent is to hold different resolutions of a ppm.

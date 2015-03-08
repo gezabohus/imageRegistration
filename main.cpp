@@ -59,7 +59,7 @@ int main(int argc_, char** argv_)
     kep2 = *i;
     transformation goodtraf = findBest(kep, kep2);
     //goodtraf.getTraf();
-    kep = goodtraf(kep2);
+    goodtraf(kep2, true, kep);
     destination = transformString(*i);
     kep.write(destination);
   }

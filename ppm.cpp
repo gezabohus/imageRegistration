@@ -11,7 +11,7 @@ namespace imageRegistration
 
   std::string  ppm::_magicword = std::string("P6");
 
-  ppm::ppm(const std::string & filename_)
+  ppm::ppm(const std::string & filename_) : _fileName(filename_)
   {
     if(!read(filename_))
       throw std::ios_base::failure("Could not open " + filename_ + "\n");
@@ -35,6 +35,7 @@ namespace imageRegistration
     _w = image_._w;
     _h = image_._h;
     _dataInt = image_._dataInt;
+    _fileName = image_._fileName;
   }
 
   ppm::ppm(const ppm & image_, size_t scale_)
@@ -62,6 +63,11 @@ namespace imageRegistration
 
   ppm::ppm(size_t width, size_t height) : _w(width), _h(height)
   {
+    setSize(width, height);
+  }
+
+  void ppm::setSize(size_t width, size_t height)
+  {
     // todo: could be optimized by allocating the memory for _dataInt and setting
     // the pointers.
     std::vector < drgb > dummy(_w);
@@ -72,8 +78,13 @@ namespace imageRegistration
   {
     return _dataInt[point[0]][point[1]];
   }
-
-  size_t ppm::getW() const 
+  
+  drgb ppm::getColor( int x, int y ) const
+  {
+    return _dataInt[x][y];
+  }
+  
+  size_t ppm::getW() const
   {
     return _w;
   }

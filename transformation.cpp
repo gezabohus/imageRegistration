@@ -24,26 +24,31 @@ void transformation::setAll(double a_, int ox_, int oy_, int vx_, int vy_)
   _vector.second = vy_;
 }
 
-ppm transformation::operator() (const ppm & image_ ) const
+ppm transformation::operator() (const ppm & image_, bool smooth, ppm & target_) const
 {
   ppm image(image_.getW(), image_.getH());
-  drgb gray(27);
+  drgb gray(127);
   double c(cos(_angle));
   double s(sin(_angle));
+  std::pair < int, int > imagePoint;
+  int x, y;
+  int & i(imagePoint.first);
+  int & j(imagePoint.second);
+  int & ox(_origin.first);
+  int & oy(_origin.first);
+  int h(image.getH());
+  int w(image.getW());
+  std::vector< int > rPoint(2);
   
-  for (size_t i = 0; i < image.getH(); ++i)
-    for (size_t j = 0; j < image.getW(); ++j)
+  for (i = 0; i < h; ++i)
+    for (j = 0; j < w; ++j)
     {
-      std::pair < int, int > point, imagePoint;
-      std::vector< int > rPoint(2);
-      imagePoint.first = (int)i;
-      imagePoint.second = (int)j;
-      point.first  = (int) ((((int)i - _origin.first)) * c + (((int)j - _origin.second)) * (-1) * s + _origin.first - _vector.first + 0.5);
-      point.second = (int) ((((int)i - _origin.first)) * s + (((int)j - _origin.second)) *        c + _origin.second - _vector.second + 0.5);
-      if( (point.first >= 0) && (point.first < (int) image_.getH()) && (point.second >=0 ) && (point.second < (int) image_.getW()) )
+      x  = (((i - ox)) * c + ((j - oy)) * (-1) * s + ox - _vector.first + 0.5);
+      y = (((i - ox)) * s + ((j - oy)) *        c + oy - _vector.second + 0.5);
+      if( (x >= 0) && (x < h) && (y >=0 ) && (y < w) )
       {
-        rPoint[0] = point.first;
-        rPoint[1] = point.second;
+        rPoint[0] = x;
+        rPoint[1] = y;
         drgb color = image_.getColor(rPoint);
         image.reWritePoint( imagePoint, color );
       }
@@ -55,16 +60,26 @@ ppm transformation::operator() (const ppm & image_ ) const
   return(image);
 }
 
-std::pair < int, int > transformation::operator() (const std::pair < size_t, size_t > & point_) const
-{
-	std::pair < int, int > point;
-  double c(cos(_angle));
-  double s(sin(_angle));          
-	point.first  = (int) ((((int)point_.first - _origin.first)) *        c + (((int)point_.second - _origin.second)) *  s + _origin.first + _vector.first + 0.5);
-	point.second = (int) ((((int)point_.first - _origin.first)) * (-1) * s + (((int)point_.second - _origin.second)) *  c + _origin.second + _vector.second + 0.5);
-	return point;
-}
-
+  std::pair < int, int > transformation::operator() (const std::pair < size_t, size_t > & point_) const
+  {
+    std::pair < int, int > point;
+    double c(cos(_angle));
+    double s(sin(_angle));
+    point.first  = (int) ((((int)point_.first - _origin.first)) *        c + (((int)point_.second - _origin.second)) *  s + _origin.first + _vector.first + 0.5);
+    point.second = (int) ((((int)point_.first - _origin.first)) * (-1) * s + (((int)point_.second - _origin.second)) *  c + _origin.second + _vector.second + 0.5);
+    return point;
+  }
+  
+  std::vector <int > transformation::operator() (const std::vector  <int > & point_) const
+  {
+    std::vector < int> point(2);
+    double c(cos(_angle));
+    double s(sin(_angle));
+    point[0] = (((point_[0] - _origin.first)) *        c + ((point_[1] - _origin.second)) *  s + _origin.first + _vector.first + 0.5);
+    point[1] = (((point_[0] - _origin.first)) * (-1) * s + ((point_[1] - _origin.second)) *  c + _origin.second + _vector.second + 0.5);
+    return point;
+  }
+  
 transformation transformation::inverse ()
 {
 	double angle;
@@ -121,34 +136,31 @@ void transformation::read(std::string fn_)
   fread(&_level, sizeof(size_t), 1, file);
 }
 
-double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, transformation transf_)
+double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, const transformation & transf_)
 {
   
   // These will collect  (partial sums of) means and variances for the two images.
   drgb firstM(0), firstV(0), secondM(0), secondV(0), coVar(0), corr(0);
 	int numPoints = 0;
-	for (size_t i = 0; i < secondPic.getH(); ++i)
-		for (size_t j = 0; j < secondPic.getW(); ++j)
+  std::vector<int> ijpoint(2); // this will index the second image
+  int &i(ijpoint[0]);
+  int &j(ijpoint[1]);
+  std::vector<int> point(2);
+  size_t h(secondPic.getH()), w(secondPic.getW());
+	for (i = 0.1*h; i < .9*h; ++i)
+		for (j = 0.1*w; j < .9*w ; ++j)
 		{
-      std::pair < size_t, size_t > ijpoint;
-      ijpoint.first = i;
-      ijpoint.second = j;
-      std::pair < int, int > point;
-      std::vector< int > firstPoint(2), secondPoint(2);
-      point = transf_(ijpoint);
       //point.first  = (int) ((((int)i - _origin.first)) * cos(_angle) + (((int)j - _origin.second)) * (-1) * sin(_angle) + _origin.first - _vector.first + 0.5);
       //point.second = (int) ((((int)i - _origin.first)) * sin(_angle) + (((int)j - _origin.second)) *        cos(_angle) + _origin.second - _vector.second + 0.5);
-      if( (point.first >= 0) && (point.first < (int) secondPic.getH()) && (point.second >=0 ) && (point.second < (int) secondPic.getW()) )
+      point = transf_(ijpoint);
+      if( (point[0] >= 0) && (point[0] < (int) secondPic.getH()) && (point[1] >=0 ) && (point[1] < (int) secondPic.getW()) )
       {
-        secondPoint[0] = (int) i;
-        secondPoint[1] = (int) j;
-        firstPoint[0] = point.first;
-        firstPoint[1] = point.second;
-        firstM  += firstPic.getColor(firstPoint);
-        secondM += secondPic.getColor(secondPoint);
-        firstV  += firstPic.getColor(firstPoint) * firstPic.getColor(firstPoint);
-        secondV += secondPic.getColor(secondPoint) * secondPic.getColor(secondPoint);
-        coVar   += firstPic.getColor(firstPoint) * secondPic.getColor(secondPoint);
+        drgb fc, sc;
+        firstM  += (fc = firstPic.getColor(point));
+        secondM += (sc = secondPic.getColor(i, j));
+        firstV  += fc * fc;
+        secondV += sc * sc;
+        coVar   += fc * sc;
         ++numPoints;
       }
 		}
@@ -176,6 +188,8 @@ double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, tr
 
 transformation bruteForceBase(const ppm & firstPic, const ppm & secondPic)
 {
+  firstPic.write("/tmp/1.ppm");
+  secondPic.write("/tmp/2.ppm");
   const int originXmin = 0; //(int) secondPic.getH() / 2;
   const int originYmin = 0; //(int) secondPic.getW() / 2;
   const int originXmax = originXmin + 1;
@@ -201,7 +215,7 @@ transformation bruteForceBase(const ppm & firstPic, const ppm & secondPic)
 	  for( int oriy = originYmin; oriy < originYmax; ++oriy )
 		  for ( int vecx = vectorXmin; vecx < vectorXmax; ++vecx )
         for ( int vecy = vectorYmin; vecy < vectorYmax; ++vecy )
-          // we want to allow angle to be zero and it's a double, so we g from zero to up and down
+          // we want to allow angle to be zero and it's a double, so we go from zero to up and down
           for ( double ang = 0.; ang < angleMax + anglestep; ang += anglestep ) // these are not ints
           {
             traf.setAll(ang, orix, oriy, vecx, vecy);
@@ -227,7 +241,7 @@ transformation bruteForceBase(const ppm & firstPic, const ppm & secondPic)
   return bestTraf;
 }
 
-transformation oneStep (const ppm & firstPic, const ppm & secondPic, transformation trans)
+transformation oneStep (const ppm & firstPic, const ppm & secondPic, const transformation & trans)
 {
   std::pair < int, int > orig;
   orig.first = orig.second = 0;
@@ -248,7 +262,7 @@ transformation oneStep (const ppm & firstPic, const ppm & secondPic, transformat
     for ( int vecy = trans.getVector().second - 1; vecy < trans.getVector().second + 2; ++vecy )
       // Since the best guess for the angle is the previous one, we start with that only go in the direction
       // where there is an improvement. This takes some logic.
-      for ( double ang = bestAng -2 * anglestep; ang < bestAng + 3 * anglestep; ang += anglestep / 2 )
+      for ( double ang = trans.getAngle() -2 * anglestep; ang < trans.getAngle() + 3 * anglestep; ang += anglestep / 2 )
       {
         traf.setAngle(ang);
         traf.setOrigin(ori);
@@ -265,6 +279,11 @@ transformation oneStep (const ppm & firstPic, const ppm & secondPic, transformat
         }
       }
 	transformation bestTraf(bestAng, bestOri, bestVec, 0);
+  // dump the two pics
+  firstPic.write("/tmp/1.ppm");
+  ppm sp;
+  trans(secondPic, false, sp);
+  sp.write("/tmp/2.ppm");
 	return bestTraf;
   
 }
@@ -281,12 +300,16 @@ transformation findBest(ppm & firstPic, ppm & secondPic)
 	goodtraf.setLevel(depth-1);
 	for (size_t i = 1; (int) i < (int) depth; ++i)
 	{
-		std::cout << i << " ";
+    std::cout << i << " ";
     std::cout.flush();
-		goodtraf.goOut(2);
-		goodtraf = oneStep(firstPics.getPic(depth-1-i), secondPics.getPic(depth-1-i), goodtraf);
-		goodtraf.setLevel(depth-1-i);
+    goodtraf.goOut(2);
+    goodtraf = oneStep(firstPics.getPic(depth-1-i), secondPics.getPic(depth-1-i), goodtraf);
+//    pic
+    goodtraf.setLevel(depth-1-i);
 	}
+  // write out pics for debugging purposes
+//  firstPics.writeAll();
+//  secondPics.writeAll();
 	std::cout << "\n";
 	return goodtraf;
 }

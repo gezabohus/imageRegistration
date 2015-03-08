@@ -24,7 +24,7 @@ public:
   void setVector(std::pair < int, int > vector_) { _vector.first = vector_.first; _vector.second = vector_.second; }
   void setLevel(size_t level_) { _level = level_; }
   void setAll(double a_, int ox_, int oy_, int vx_, int vy_);
-  double getAngle() { return _angle; }
+  double getAngle() const { return _angle; }
   std::pair < int, int > getOrigin() const { return _origin; }
   std::pair < int, int > getVector() const { return _vector; }
   size_t getLevel() const { return _level; }
@@ -36,11 +36,12 @@ public:
 
   /// Inverse transform an image by rotating around _origin and translating by _vector. 
   /// The source image is 
-  ppm operator() (const ppm & image_ ) const ; 
+  ppm operator() (const ppm & image_, bool smooth, ppm & target_) const ;
   
   /// Transform a point by rotating it around the _origin and translating by _vector. Does not
   /// check if we're outside of the image. Output the new coordinates.
   std::pair < int, int > operator() (const std::pair < size_t, size_t > &) const ;
+  std::vector <int > operator() (const std::vector  <int > &) const ;
   transformation inverse();
   void goOut(size_t scale_);
   void write(std::string fn_) const ;
@@ -54,10 +55,10 @@ private:
 };
 
 /// Compute the correlation between the first and the transformed second image.
-double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, transformation transf_);
+double transformationCorrelation(const ppm & firstPic, const ppm & secondPic, const transformation & transf_);
 
 transformation bruteForceBase(const ppm & firstPic, const ppm & secondPic);
-transformation oneStep (const ppm & firstPic, const ppm & secondPic, transformation trans);
+transformation oneStep (const ppm & firstPic, const ppm & secondPic, const transformation & trans);
 transformation findBest(ppm & firstPic, ppm & secondPic);
 
 } //namespace imageRegistration
