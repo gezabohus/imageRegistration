@@ -38,7 +38,7 @@ namespace imageRegistration
   drgb operator -= (drgb & a, const drgb & b);
   int lMax (drgb point);
 
-  /// Holds the image data read from a ppm file.
+  /// Holds the image data read from a ppm file. First coordinate goes 0..h, second goes 0..w!
   class ppm
   {
   public:
@@ -71,6 +71,7 @@ namespace imageRegistration
     drgb getColor( std::vector< int > point ) const;
     drgb getColor( int x, int y ) const;
     void hulyeszin();
+    void setColor(int x_, int y_, drgb color_);
     void reWritePoint(std::pair <int, int> point_, drgb szin_);
     
 

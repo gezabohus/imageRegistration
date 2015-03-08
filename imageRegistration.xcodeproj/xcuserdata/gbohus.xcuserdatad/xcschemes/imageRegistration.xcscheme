@@ -58,7 +58,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/gbohus/Pictures/constructionImages/list.txt"
+            argument = "/Users/gbohus/Pictures/constructionImages/allPPM/list.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

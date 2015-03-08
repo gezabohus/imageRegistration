@@ -49,6 +49,10 @@ int main(int argc_, char** argv_)
   }
 
   
+  
+  /// We walk on the list of names. For a pair of images (starting with the first two, we
+  /// transformt the second to match the first. We write it out, make it the first image of
+  /// the next pair.
   source1 = *filenames.begin();
 	ppm kep(source1);
 	ppm kep2;
@@ -58,10 +62,10 @@ int main(int argc_, char** argv_)
   {
     kep2 = *i;
     transformation goodtraf = findBest(kep, kep2);
-    //goodtraf.getTraf();
-    goodtraf(kep2, true, kep);
+    goodtraf(kep2, false, kep);
     destination = transformString(*i);
     kep.write(destination);
+    std::cout << "Wrote " << destination.c_str() << ".\n";
   }
   
 //  ppm image0(filenames[0]);

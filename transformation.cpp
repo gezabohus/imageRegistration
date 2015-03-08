@@ -18,7 +18,8 @@ std::pair < int, int > transformation::_origin = std::pair < int, int >(0,0);
 void transformation::setAll(double a_, int ox_, int oy_, int vx_, int vy_)
 {
   _angle = a_;
-//  _origin.first = ox_;
+  if(std::abs(_angle > 1)) throw;
+  //  _origin.first = ox_;
 //  _origin.second = oy_;
   _vector.first = vx_;
   _vector.second = vy_;
@@ -26,38 +27,61 @@ void transformation::setAll(double a_, int ox_, int oy_, int vx_, int vy_)
 
 ppm transformation::operator() (const ppm & image_, bool smooth, ppm & target_) const
 {
-  ppm image(image_.getW(), image_.getH());
+  int h(image_.getH());
+  int w(image_.getW());
+  target_.setSize(w, h);
   drgb gray(127);
   double c(cos(_angle));
   double s(sin(_angle));
-  std::pair < int, int > imagePoint;
-  int x, y;
-  int & i(imagePoint.first);
-  int & j(imagePoint.second);
+  int i;
+  int j;
   int & ox(_origin.first);
-  int & oy(_origin.first);
-  int h(image.getH());
-  int w(image.getW());
-  std::vector< int > rPoint(2);
+  int & oy(_origin.second);
+//    std::vector< int > rPoint(2);
+  double x, y;
   
   for (i = 0; i < h; ++i)
     for (j = 0; j < w; ++j)
     {
-      x  = (((i - ox)) * c + ((j - oy)) * (-1) * s + ox - _vector.first + 0.5);
+      x = (((i - ox)) * c + ((j - oy)) * (-1) * s + ox - _vector.first + 0.5);
       y = (((i - ox)) * s + ((j - oy)) *        c + oy - _vector.second + 0.5);
-      if( (x >= 0) && (x < h) && (y >=0 ) && (y < w) )
+      if(std::abs(int(x-i)) > 50 || std::abs(int(y-j)) > 50)
+        throw;
+      if( smooth)
       {
-        rPoint[0] = x;
-        rPoint[1] = y;
-        drgb color = image_.getColor(rPoint);
-        image.reWritePoint( imagePoint, color );
+        if((x >= 0) && (x < h-1) && (y >=0) && (y < w-1) )
+        {
+          int xl(x), xh(ceil(x)), yl(y), yh(ceil(y));
+          drgb colorll = image_.getColor(xl, yl);
+          drgb colorlh = image_.getColor(xl, yh);
+          drgb colorhl = image_.getColor(xh, yl);
+          drgb colorhh = image_.getColor(xh, yh);
+          double wll = (1 - x + xl)*(1 - y + yl);
+          double wlh = (1 - x + xl)*(1 + y - yh);
+          double whl = (1 + x - xh)*(1 - y + yl);
+          double whh = (1 + x - xh)*(1 + y - yh);
+          drgb color = colorll * wll + colorlh * wlh + colorhl * whl + colorhh * whh;
+          target_.setColor(i, j, color);
+        }
+        else
+        {
+          target_.setColor(i, j, gray);
+        }
       }
       else
       {
-        image.reWritePoint( imagePoint, gray );
+        if( (x >= 0) && (x < h) && (y >=0 ) && (y < w) )
+        {
+          drgb color = image_.getColor((int)x, (int)y);
+          target_.setColor(i, j, color);
+        }
+        else
+        {
+          target_.setColor(i, j, gray);
+        }
       }
     }
-  return(image);
+  return target_;
 }
 
   std::pair < int, int > transformation::operator() (const std::pair < size_t, size_t > & point_) const
@@ -198,8 +222,8 @@ transformation bruteForceBase(const ppm & firstPic, const ppm & secondPic)
   const int vectorYmin = -((int) secondPic.getW() / 5) - 1;
   const int vectorXmax = (int) secondPic.getH() / 5 + 1;
   const int vectorYmax = (int) secondPic.getW() / 5 + 1;
-  double angleMin = -1;
-  double angleMax = 1;
+  double angleMin = -.3;
+  double angleMax = .3;
   double anglestep = asin((double) 2 / __max((int) secondPic.getH(), (int) secondPic.getW()));
   
   std::pair < int, int > orig(0,0);

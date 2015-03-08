@@ -61,13 +61,15 @@ namespace imageRegistration
       }
   }
 
-  ppm::ppm(size_t width, size_t height) : _w(width), _h(height)
+  ppm::ppm(size_t width, size_t height)
   {
     setSize(width, height);
   }
 
   void ppm::setSize(size_t width, size_t height)
   {
+    _w = width;
+    _h = height;
     // todo: could be optimized by allocating the memory for _dataInt and setting
     // the pointers.
     std::vector < drgb > dummy(_w);
@@ -288,9 +290,14 @@ namespace imageRegistration
     return(int)( __max( __max( __max(point.r, -point.r) , __max(point.g, -point.g) ) , __max(point.b, -point.b) ) );
   }
   
-  void ppm::reWritePoint(std::pair <int, int> point_, drgb szin_)
+  void ppm::setColor(int x_, int y_, drgb color_)
   {
-    _dataInt[point_.first][point_.second] = szin_;
+    _dataInt[x_][y_] = color_;
+  }
+  
+  void ppm::reWritePoint(std::pair <int, int> point_, drgb color_)
+  {
+    _dataInt[point_.first][point_.second] = color_;
   }
 
   ppmArray::ppmArray(const ppm & image_, size_t minSize_)
