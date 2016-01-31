@@ -88,55 +88,55 @@ namespace imageRegistration
 //    holmax_ = holmax;
 //  }
 
-  void Optimizer::searchForMatch (std::vector < int > & holmax_, size_t radius_, std::vector < int > & holmax2_, double & mennyimax_)
-  {
-    std::pair < int, int > holmax;
-    holmax.first = holmax_[0] - _sampleSize/2;
-    holmax.second = holmax_[1] - _sampleSize/2;
-    std::pair < int, int > sampleSize;
-    sampleSize.first = sampleSize.second = _sampleSize;
-    size_t i, j;
-    int x, y;
-    std::pair < int, int > r;
-    double m=0, corv;
-    int xmax, ymax;
-    for (i = 0; i < radius_; ++i)
-      for (j = 0; j < 2 * i + 1; ++j)
-      {
-        //upper edge
-        x = holmax.first + j - radius_ + 1;
-        y = holmax.second - i;
-        r.first = x;
-        r.second = y;
-        corv = ppm::corr(_leftImage, _rightImage, holmax, r, sampleSize);
-        if (m < corv) {m=corv; xmax = x; ymax = y;}
-        //lower edge
-        x = holmax.first + j - radius_ + 1;
-        y = holmax.second + i;
-        r.first = x;
-        r.second = y;
-        corv = ppm::corr(_leftImage, _rightImage, holmax, r, sampleSize);
-        if (m < corv) {m=corv; xmax = x; ymax = y;}
-        //left edge
-        x = holmax.first - i;
-        y = holmax.second + j - radius_ + 1;
-        r.first = x;
-        r.second = y;
-        corv = ppm::corr(_leftImage, _rightImage, holmax, r, sampleSize);
-        if (m < corv) {m=corv; xmax = x; ymax = y;}
-        //right edge
-        x = holmax.first + i;
-        y = holmax.second + j - radius_ + 1;
-        r.first = x;
-        r.second = y;
-        corv = ppm::corr(_leftImage, _rightImage, holmax, r, sampleSize);
-        if (m < corv) {m=corv; xmax = x; ymax = y;}
-      }
-//      std::cout << m << "\n";
-      mennyimax_ = m;
-      holmax2_[0] = xmax;
-      holmax2_[1] = ymax;
-  }
+//  void Optimizer::searchForMatch (std::vector < int > & holmax_, size_t radius_, std::vector < int > & holmax2_, double & mennyimax_)
+//  {
+//    std::pair < int, int > holmax;
+//    holmax.first = holmax_[0] - _sampleSize/2;
+//    holmax.second = holmax_[1] - _sampleSize/2;
+//    std::pair < int, int > sampleSize;
+//    sampleSize.first = sampleSize.second = _sampleSize;
+//    size_t i, j;
+//    int x, y;
+//    std::pair < int, int > r;
+//    double m=0, corv;
+//    int xmax, ymax;
+//    for (i = 0; i < radius_; ++i)
+//      for (j = 0; j < 2 * i + 1; ++j)
+//      {
+//        //upper edge
+//        x = holmax.first + j - radius_ + 1;
+//        y = holmax.second - i;
+//        r.first = x;
+//        r.second = y;
+//        corv = ppm::corr(_leftImage, _rightImage, holmax, r, sampleSize);
+//        if (m < corv) {m=corv; xmax = x; ymax = y;}
+//        //lower edge
+//        x = holmax.first + j - radius_ + 1;
+//        y = holmax.second + i;
+//        r.first = x;
+//        r.second = y;
+//        corv = ppm::corr(_leftImage, _rightImage, holmax, r, sampleSize);
+//        if (m < corv) {m=corv; xmax = x; ymax = y;}
+//        //left edge
+//        x = holmax.first - i;
+//        y = holmax.second + j - radius_ + 1;
+//        r.first = x;
+//        r.second = y;
+//        corv = ppm::corr(_leftImage, _rightImage, holmax, r, sampleSize);
+//        if (m < corv) {m=corv; xmax = x; ymax = y;}
+//        //right edge
+//        x = holmax.first + i;
+//        y = holmax.second + j - radius_ + 1;
+//        r.first = x;
+//        r.second = y;
+//        corv = ppm::corr(_leftImage, _rightImage, holmax, r, sampleSize);
+//        if (m < corv) {m=corv; xmax = x; ymax = y;}
+//      }
+////      std::cout << m << "\n";
+//      mennyimax_ = m;
+//      holmax2_[0] = xmax;
+//      holmax2_[1] = ymax;
+//  }
 
 //  ppm Optimizer::positioner (void)
 //  {

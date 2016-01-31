@@ -7,7 +7,7 @@
 #include "Optimizer.h"
 #include "utilities.h"
 #include "transformation.h"
-
+#include "transformationRecord.h"
 
 int main(int argc_, char** argv_)
 {
@@ -54,18 +54,23 @@ int main(int argc_, char** argv_)
   /// transformt the second to match the first. We write it out, make it the first image of
   /// the next pair.
   source1 = *filenames.begin();
-	ppm kep(source1);
-	ppm kep2;
+	ppm kep1(source1), kep2;
+  std::string name1(*filenames.begin());
 	std::string destination;
+  std::string transformationFileName("trans.bin");
   
   for(std::vector<std::string>::iterator i = filenames.begin() + 1; i != filenames.end(); ++i)
   {
-    kep2 = *i;
-    transformation goodtraf = findBest(kep, kep2);
-    goodtraf(kep2, false, kep);
-    destination = transformString(*i);
-    kep.write(destination);
+    std::string & name2(*i);
+    kep2 = name2;
+    transformation goodtraf = findBest(kep1, kep2);
+    transformationRecord trR(goodtraf, name1, name2);
+    goodtraf(kep2, false, kep1);
+    destination = transformString(name2);
+    kep1.write(destination);
     std::cout << "Wrote " << destination.c_str() << ".\n";
+    kep1 = kep2;
+    name1 = name2;
   }
   
 //  ppm image0(filenames[0]);

@@ -304,7 +304,7 @@ namespace imageRegistration
   {
     // todo: needs rewrite, suboptimal use of vectors
     _minSize = minSize_;
-    std::vector < const ppm* > pics(1, & image_);
+    //std::vector < const ppm* > pics(1, & image_);
     size_t dummy = image_.getW() < image_.getH() ? image_.getW() : image_.getH();
     size_t numIter = 1;
     while ( (dummy /= 2) > _minSize )
@@ -312,9 +312,10 @@ namespace imageRegistration
       ++numIter;
     }
     _numLevels = numIter;
-    pics.resize(numIter);
-    _pics = pics;
+    _pics.resize(numIter);
+    _pics[0] = &image_;
     scale();
+    writeAll();
   }
   
   ppmArray::~ppmArray()
