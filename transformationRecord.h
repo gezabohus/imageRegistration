@@ -17,18 +17,29 @@
 namespace imageRegistration
 {
 
-  template < class PixelT >
+  template < class TransformT >
   class transformationRecord
   {
   public:
-    transformationRecord(transformation< PixelT > & transformation_,
-                         std::string & name1_,
-                         std::string & name2_);
-    void write(std::ostream & out_);
-    void read(std::istream & in_);
+
+    transformationRecord(TransformT & transformation_,
+      std::string & name1_,
+      std::string & name2_) :
+      _tr(transformation_), _name1(name1_), _name2(name2_)
+    {}
+
+    void write(std::ostream & out_)
+    {
+      out_ << _name1 << "\n" << _name2 << "\n";
+      _tr.write(out_);
+    }
+
+    void read(std::istream & in_)
+    {
+    }
 
   private:
-    transformation< PixelT > & _tr;
+    TransformT & _tr;
     std::string & _name1, & _name2;
   };
 

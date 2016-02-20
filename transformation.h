@@ -101,8 +101,8 @@ namespace imageRegistration
       std::vector < int> point(2);
       double c(cos(_angle));
       double s(sin(_angle));
-      point[0] = (((point_[0] - _origin.first)) *        c + ((point_[1] - _origin.second)) *  s + _origin.first + _vector.first + 0.5);
-      point[1] = (((point_[0] - _origin.first)) * (-1) * s + ((point_[1] - _origin.second)) *  c + _origin.second + _vector.second + 0.5);
+      point[0] = (int)(((point_[0] - _origin.first)) *        c + ((point_[1] - _origin.second)) *  s + _origin.first + _vector.first + 0.5);
+      point[1] = (int)(((point_[0] - _origin.first)) * (-1) * s + ((point_[1] - _origin.second)) *  c + _origin.second + _vector.second + 0.5);
       return point;
     }
     //transformation inverse();
@@ -181,7 +181,7 @@ namespace imageRegistration
   {
 
     // These will collect  (partial sums of) means and variances for the two images.
-    typename PictureT::pixeltype firstM(0), firstV(0), secondM(0), secondV(0), coVar(0), corr(0);
+    typename PictureT::pixelType firstM(0), firstV(0), secondM(0), secondV(0), coVar(0), corr(0);
     int numPoints = 0;
     std::vector<int> ijpoint(2); // this will index the second image
     int &i(ijpoint[0]);
@@ -196,7 +196,7 @@ namespace imageRegistration
         point = transf_(ijpoint);
         if ((point[0] >= 0) && (point[0] < (int)firstPic.getH()) && (point[1] >= 0) && (point[1] < (int)firstPic.getW()))
         {
-          typename PictureT::pixeltype fc, sc;
+          typename PictureT::pixelType fc, sc;
           fc = firstPic.getColor(point);
           sc = secondPic.getColor(i, j);
           firstM += fc;

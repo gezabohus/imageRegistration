@@ -21,7 +21,7 @@ struct drgb
   drgb(double ar_, double ag_, double ab_) : r(ar_), g(ag_), b(ab_) {}
 };
 
-//drgb operator * (const drgb & a, const drgb & b);
+drgb operator * (const drgb & a, const drgb & b);
 //drgb operator + (const drgb & a, const drgb & b);
 //drgb operator - (const drgb & a, const drgb & b);
 //drgb operator / (const drgb & a, int b);

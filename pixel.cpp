@@ -21,14 +21,14 @@ namespace imageRegistration
   //  return c;
   //}
 
-  //drgb operator * (const drgb & a, const drgb & b)
-  //{
-  //  drgb c(a);
-  //  c.r *= b.r;
-  //  c.g *= b.g;
-  //  c.b *= b.b;
-  //  return c;
-  //}
+  drgb operator * (const drgb & a, const drgb & b)
+  {
+    drgb c(a);
+    c.r *= b.r;
+    c.g *= b.g;
+    c.b *= b.b;
+    return c;
+  }
 
   //drgb operator / (const drgb & a, int b)
   //{
