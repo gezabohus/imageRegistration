@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "pixel.h"
 
 namespace imageRegistration
@@ -83,7 +85,7 @@ namespace imageRegistration
   /// Find the maximum color level of a double rgb pixel.
   int lMax(drgb point)
   {
-    return(int)(__max(__max(__max(point.r, -point.r), __max(point.g, -point.g)), __max(point.b, -point.b)));
+    return(int)(std::max(std::max(std::max(point.r, -point.r), std::max(point.g, -point.g)), std::max(point.b, -point.b)));
   }
 
 }

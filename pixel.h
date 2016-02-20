@@ -1,10 +1,5 @@
 #ifndef PIXEL_H
 #define PIXEL_H
-
-#ifndef __max
-#define __max(x,y) (((x) < (y)) ? (y) : (x))
-#endif
-
 //struct rgb
 //{
 //  int r, g, b;
@@ -12,7 +7,9 @@
 //  rgb(int barmi_): r(barmi_), g(barmi_), b(barmi_) {}
 //};
 
-/// A red-green-blue pixel. Levels are doubles!
+namespace imageRegistration {
+
+  /// A red-green-blue pixel. Levels are doubles!
 struct drgb
 {
   double r, g, b;
@@ -46,5 +43,5 @@ dGray & operator += (dGray & a, const dGray & b);
 dGray operator /= (dGray & a, int b);
 dGray operator -= (dGray & a, const dGray & b);
 
-
+} // namespace
 #endif

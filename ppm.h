@@ -12,9 +12,6 @@
 
 namespace imageRegistration
 {
-#ifndef __max
-#define __max(x,y) (((x) < (y)) ? (y) : (x))
-#endif
   
 
 

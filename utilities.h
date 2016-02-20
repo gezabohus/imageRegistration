@@ -61,10 +61,10 @@ std::string transformString(const std::string & s_, const char * tr_ = "_tr");
     return sum/t0.size();
   }
   
-  template <>
-  double absAverageDiff<double>(const double & t0, const double & t1);
-  template <>
-  double absAverageDiff<drgb>(const drgb & t0, const drgb & t1);
+
+  double absAverageDiff(const double & t0, const double & t1);
+  
+  double absAverageDiff(const drgb & t0, const drgb & t1);
   
 } //namespace imageRegistration
 

@@ -18,6 +18,15 @@
 namespace imageRegistration
 {
 
+  
+  drgb & operator /= (drgb & a, const int & b)
+  {
+    a.r /= b;
+    a.g /= b;
+    a.b /= b;
+    return a;
+  }
+  
   /// A transformation is a translation and rotation of the plane.
   template <class PictureT>
   class transformation
@@ -244,7 +253,7 @@ namespace imageRegistration
     const int vectorYmax = (int)secondPic.getW() / 5 + 1;
     double angleMin = -.3;
     double angleMax = .3;
-    double anglestep = asin((double)2 / __max((int)secondPic.getH(), (int)secondPic.getW()));
+    double anglestep = asin((double)2 / std::max((int)secondPic.getH(), (int)secondPic.getW()));
 
     std::pair < int, int > orig(0, 0);
 
@@ -299,7 +308,7 @@ namespace imageRegistration
     bestAng = trans.getAngle();
     bestCorr = -2;
 
-    double anglestep = asin((double)2 / __max((int)secondPic.getH(), (int)secondPic.getW()));
+    double anglestep = asin((double)2 / std::max((int)secondPic.getH(), (int)secondPic.getW()));
     ori = trans.getOrigin();
 
     for (int vecx = trans.getVector().first - 1; vecx < trans.getVector().first + 2; ++vecx)
