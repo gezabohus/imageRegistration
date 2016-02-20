@@ -1,6 +1,8 @@
 #ifndef _PPM_H_
 #define _PPM_H_
 
+#include <cmath>
+#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
@@ -269,7 +271,7 @@ namespace imageRegistration
       PixelT gray(127);
       if ((x >= 0) && (x < h - 1) && (y >= 0) && (y < w - 1)) //TODO: not sure if boundaries are correct: h-1=>h, w-1=>w ?
       {
-        int xl((int)x), xh((int)ceil(x)), yl((int)y), yh((int)ceil(y));
+        int xl((int)x), xh((int)std::ceil(x)), yl((int)y), yh((int)std::ceil(y));
         PixelT colorll = image_.getColor(xl, yl);
         PixelT colorlh = image_.getColor(xl, yh);
         PixelT colorhl = image_.getColor(xh, yl);
