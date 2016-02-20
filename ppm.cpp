@@ -1,3 +1,4 @@
+#include "pixel.h"
 #include "ppm.h"
 #include "utilities.h"
 
@@ -8,8 +9,8 @@
 namespace imageRegistration
 {
   
-  std::string  ppm<drgb>::_magicword = std::string("P6");
-  std::string  ppm<dGray>::_magicword = std::string("P5"); //pgm magic word
+  template<> std::string  ppm<drgb>::_magicword = std::string("P6");
+  template<> std::string  ppm<dGray>::_magicword = std::string("P5"); //pgm magic word
 
 
 

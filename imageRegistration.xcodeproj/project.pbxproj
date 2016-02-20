@@ -13,6 +13,7 @@
 		F81F898F11E8EFDD00AAE1BF /* ppm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F81F898B11E8EFDD00AAE1BF /* ppm.cpp */; };
 		F85458E91C38393900145616 /* transformationRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F85458E81C38393900145616 /* transformationRecord.cpp */; };
 		F880BBE411EE4741005A730B /* utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F880BBE311EE4741005A730B /* utilities.cpp */; };
+		F882C09C1C787D4900F53C2E /* pixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F882C09A1C787D4900F53C2E /* pixel.cpp */; };
 		F88C362E1A4ECE84006D211C /* transformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F88C362D1A4ECE84006D211C /* transformation.cpp */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,8 @@
 		F85458E71C38385700145616 /* transformationRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = transformationRecord.h; sourceTree = "<group>"; };
 		F85458E81C38393900145616 /* transformationRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transformationRecord.cpp; sourceTree = "<group>"; };
 		F880BBE311EE4741005A730B /* utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utilities.cpp; sourceTree = "<group>"; };
+		F882C09A1C787D4900F53C2E /* pixel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pixel.cpp; sourceTree = "<group>"; };
+		F882C09B1C787D4900F53C2E /* pixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pixel.h; sourceTree = "<group>"; };
 		F88C362C1A4ECE0A006D211C /* transformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = transformation.h; sourceTree = "<group>"; };
 		F88C362D1A4ECE84006D211C /* transformation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transformation.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +76,8 @@
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
 				F81F898A11E8EFDD00AAE1BF /* Optimizer.h */,
 				F81F898911E8EFDD00AAE1BF /* Optimizer.cpp */,
+				F882C09A1C787D4900F53C2E /* pixel.cpp */,
+				F882C09B1C787D4900F53C2E /* pixel.h */,
 				F81F898C11E8EFDD00AAE1BF /* ppm.h */,
 				F81F898B11E8EFDD00AAE1BF /* ppm.cpp */,
 				F88C362C1A4ECE0A006D211C /* transformation.h */,
@@ -158,6 +163,7 @@
 				F880BBE411EE4741005A730B /* utilities.cpp in Sources */,
 				F88C362E1A4ECE84006D211C /* transformation.cpp in Sources */,
 				F85458E91C38393900145616 /* transformationRecord.cpp in Sources */,
+				F882C09C1C787D4900F53C2E /* pixel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
