@@ -9,15 +9,7 @@ namespace imageRegistration
 {
 
    
-  Optimizer::Optimizer(const ppm & l_, const ppm & r_) :
-    _leftImage(l_), _rightImage(r_)
-  {
-  }
 
-  Optimizer::~Optimizer(void)
-  {
-
-  }
  
 //  size_t Optimizer::search (size_t where_[2], std::vector < int > & holmax_, double & var_)
 //  {
@@ -274,19 +266,5 @@ namespace imageRegistration
 //  }
 
 
-  void Optimizer::setSize (int n_)
-  {
-    _sampleSize = n_;
-  }
-  void Optimizer::setMargin (int n_)
-  {
-    _margin = n_;
-  }
-  
-  double Optimizer::similarity() const
-  {
-    
-    return absAverageDiff(_leftImage._dataInt, _rightImage._dataInt);
-  }
   
 } //namespace imageRegistration

@@ -34,10 +34,10 @@ int main(int argc_, char** argv_)
       filenames.push_back(buf); // store
     }
   }
-  else
+  else // if not enough input, add two images
   {
-    filenames.push_back("D:/Projects/ImageRegistration/ImageRegistration/construction/DSCN7376.ppm");
-    filenames.push_back("D:/Projects/ImageRegistration/ImageRegistration/construction/DSCN7377.ppm");
+    filenames.push_back("C:/Users/bohus_000/Documents/Visual Studio 2015/Projects/imageRegistration/ConvertedFiles_grey/DSCN7314grey_.ppm");
+    filenames.push_back("C:/Users/bohus_000/Documents/Visual Studio 2015/Projects/imageRegistration/ConvertedFiles_grey/DSCN7315grey_.ppm");
   }
 
   // "filenames" now has the list of filenames to process
@@ -48,13 +48,13 @@ int main(int argc_, char** argv_)
     exit(1);
   }
 
-  
+  typedef drgb pixT;
   
   /// We walk on the list of names. For a pair of images (starting with the first two, we
   /// transformt the second to match the first. We write it out, make it the first image of
   /// the next pair.
   source1 = *filenames.begin();
-	ppm kep1(source1), kep2;
+	ppm< pixT > kep1(source1), kep2;
   std::string name1(*filenames.begin());
 	std::string destination;
   std::string transformationFileName("trans.bin");
@@ -63,9 +63,9 @@ int main(int argc_, char** argv_)
   {
     std::string & name2(*i);
     kep2 = name2;
-    transformation goodtraf = findBest(kep1, kep2);
-    transformationRecord trR(goodtraf, name1, name2);
-    goodtraf(kep2, false, kep1);
+    transformation< ppm<pixT> > goodtraf = findBest(kep1, kep2);
+    //transformationRecord< pixT > trR(goodtraf, name1, name2);
+    goodtraf(kep2, true, kep1);
     destination = transformString(name2);
     kep1.write(destination);
     std::cout << "Wrote " << destination.c_str() << ".\n";
