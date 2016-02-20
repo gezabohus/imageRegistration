@@ -42,7 +42,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "NO"
+      useCustomWorkingDirectory = "YES"
+      customWorkingDirectory = "/Users/gbohus/Pictures/constructionImages/allPPM/ConvertedFiles_grey"
       buildConfiguration = "Development"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -58,7 +59,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/gbohus/Pictures/constructionImages/allPPM/list.txt"
+            argument = "/Users/gbohus/Pictures/constructionImages/allPPM/ConvertedFiles_grey/list.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

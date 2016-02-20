@@ -177,12 +177,11 @@ namespace imageRegistration
 
   /// Compute the correlation between the first and the transformed second image.
   template < class PictureT >
-  //double transformationCorrelation(const PictureT & firstPic, const PictureT & secondPic, const transformation< PictureT > & transf_);
   double transformationCorrelation(const PictureT & firstPic, const PictureT & secondPic, const transformation< PictureT > & transf_)
   {
 
     // These will collect  (partial sums of) means and variances for the two images.
-    drgb firstM(0), firstV(0), secondM(0), secondV(0), coVar(0), corr(0);
+    typename PictureT::pixeltype firstM(0), firstV(0), secondM(0), secondV(0), coVar(0), corr(0);
     int numPoints = 0;
     std::vector<int> ijpoint(2); // this will index the second image
     int &i(ijpoint[0]);
@@ -197,7 +196,7 @@ namespace imageRegistration
         point = transf_(ijpoint);
         if ((point[0] >= 0) && (point[0] < (int)firstPic.getH()) && (point[1] >= 0) && (point[1] < (int)firstPic.getW()))
         {
-          drgb fc, sc;
+          typename PictureT::pixeltype fc, sc;
           fc = firstPic.getColor(point);
           sc = secondPic.getColor(i, j);
           firstM += fc;
@@ -231,7 +230,6 @@ namespace imageRegistration
   }
 
   template < class PictureT >
-  //transformation< PictureT > bruteForceBase(const PictureT & firstPic, const PictureT & secondPic);
   transformation< PictureT > bruteForceBase(const PictureT & firstPic, const PictureT & secondPic)
   {
     firstPic.write("/tmp/1.ppm");
@@ -285,8 +283,8 @@ namespace imageRegistration
     transformation< PictureT > bestTraf(bestAng, bestOri, bestVec, 0);
     return bestTraf;
   }
+  
   template < class PictureT >
-  //transformation< PictureT > oneStep (const PictureT & firstPic, const PictureT & secondPic, const transformation< PictureT > & trans);
   transformation< PictureT > oneStep(const PictureT & firstPic, const PictureT & secondPic, const transformation< PictureT > & trans)
   {
     std::pair < int, int > orig;
@@ -333,6 +331,7 @@ namespace imageRegistration
     return bestTraf;
 
   }
+
   template < class PictureT >
   //transformation< PictureT > findBest(PictureT & firstPic, PictureT & secondPic);
   transformation< PictureT > findBest(PictureT & firstPic, PictureT & secondPic)
