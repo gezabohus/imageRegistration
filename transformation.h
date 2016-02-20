@@ -199,7 +199,7 @@ namespace imageRegistration
         {
           drgb fc, sc;
           fc = firstPic.getColor(point);
-          sc = secondPic.getColor(i, j)
+          sc = secondPic.getColor(i, j);
           firstM += fc;
           secondM += sc;
           firstV += fc * fc;
