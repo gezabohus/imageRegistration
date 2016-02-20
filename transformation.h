@@ -10,6 +10,7 @@
 #ifndef imageRegistration_transformation_h
 #define imageRegistration_transformation_h
 
+#include <algorithm>
 #include <utility>
 #include <vector>
 
@@ -19,13 +20,6 @@ namespace imageRegistration
 {
 
   
-  drgb & operator /= (drgb & a, const int & b)
-  {
-    a.r /= b;
-    a.g /= b;
-    a.b /= b;
-    return a;
-  }
   
   /// A transformation is a translation and rotation of the plane.
   template <class PictureT>
