@@ -24,6 +24,7 @@ namespace imageRegistration
     //friend class Optimizer<PixelT>;
 
   public:
+    typedef PixelT pixelType;
     ppm(const std::string & filename_) : _fileName(filename_)
     {
       if (!read(filename_))

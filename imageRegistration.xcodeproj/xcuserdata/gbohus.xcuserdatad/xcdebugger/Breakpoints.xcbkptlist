@@ -7,79 +7,45 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "main.cpp"
-         timestampString = "447521372.365291"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
-         landmarkName = "main(int argc_, char** argv_)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "transformation.cpp"
          timestampString = "447522383.827712"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "229"
-         endingLineNumber = "229"
-         landmarkName = "bruteForceBase(const ppm &amp; firstPic, const ppm &amp; secondPic)"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "main.cpp"
-         timestampString = "447521372.365291"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
-         landmarkName = "main(int argc_, char** argv_)"
-         landmarkType = "7">
+         endingLineNumber = "229">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "transformation.cpp"
-         timestampString = "447522383.827712"
+         timestampString = "468698601.340063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "264"
-         endingLineNumber = "264"
-         landmarkName = "bruteForceBase(const ppm &amp; firstPic, const ppm &amp; secondPic)"
-         landmarkType = "7">
+         startingLineNumber = "263"
+         endingLineNumber = "263">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "transformation.cpp"
-         timestampString = "447522383.827712"
+         timestampString = "473081200.286576"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "336"
-         endingLineNumber = "336"
-         landmarkName = "findBest(ppm &amp; firstPic, ppm &amp; secondPic)"
-         landmarkType = "7">
+         endingLineNumber = "336">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "transformation.cpp"
-         timestampString = "447522383.827712"
+         timestampString = "473081200.286576"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "324"
-         endingLineNumber = "324"
-         landmarkName = "findBest(ppm &amp; firstPic, ppm &amp; secondPic)"
-         landmarkType = "7">
+         endingLineNumber = "324">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -90,9 +56,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "217"
-         endingLineNumber = "217"
-         landmarkName = "bruteForceBase(const ppm &amp; firstPic, const ppm &amp; secondPic)"
-         landmarkType = "7">
+         endingLineNumber = "217">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -103,61 +67,51 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "197"
-         endingLineNumber = "197"
-         landmarkName = "transformationCorrelation(const ppm &amp; firstPic, const ppm &amp; secondPic, const transformation &amp; transf_)"
-         landmarkType = "7">
+         endingLineNumber = "197">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "transformation.cpp"
-         timestampString = "447522383.827712"
+         timestampString = "468698601.340063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "246"
-         endingLineNumber = "246"
-         landmarkName = "bruteForceBase(const ppm &amp; firstPic, const ppm &amp; secondPic)"
-         landmarkType = "7">
+         startingLineNumber = "245"
+         endingLineNumber = "245">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "transformation.cpp"
-         timestampString = "447522383.827712"
+         timestampString = "468698601.340063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "311"
-         endingLineNumber = "311"
-         landmarkName = "oneStep (const ppm &amp; firstPic, const ppm &amp; secondPic, const transformation &amp; trans)"
-         landmarkType = "7">
+         startingLineNumber = "310"
+         endingLineNumber = "310">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "transformation.cpp"
-         timestampString = "447522383.827712"
+         timestampString = "468698601.340063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "282"
-         endingLineNumber = "282"
-         landmarkName = "oneStep (const ppm &amp; firstPic, const ppm &amp; secondPic, const transformation &amp; trans)"
-         landmarkType = "7">
+         startingLineNumber = "281"
+         endingLineNumber = "281">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "transformation.cpp"
-         timestampString = "447522383.827712"
+         timestampString = "468698601.340063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "309"
-         endingLineNumber = "309"
-         landmarkName = "oneStep (const ppm &amp; firstPic, const ppm &amp; secondPic, const transformation &amp; trans)"
-         landmarkType = "7">
+         startingLineNumber = "308"
+         endingLineNumber = "308">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -168,9 +122,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "16"
-         endingLineNumber = "16"
-         landmarkName = "ppm::ppm(const std::string &amp; filename_)"
-         landmarkType = "5">
+         endingLineNumber = "16">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -181,9 +133,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "22"
-         endingLineNumber = "22"
-         landmarkName = "ppm::operator= (const std::string &amp; filename_)"
-         landmarkType = "5">
+         endingLineNumber = "22">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -194,9 +144,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "27"
-         endingLineNumber = "27"
-         landmarkName = "ppm::swap(ppm &amp; otherImage_)"
-         landmarkType = "5">
+         endingLineNumber = "27">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -207,9 +155,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "45"
-         endingLineNumber = "45"
-         landmarkName = "ppm::ppm(const ppm &amp; image_, size_t scale_)"
-         landmarkType = "5">
+         endingLineNumber = "45">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -220,9 +166,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "37"
-         endingLineNumber = "37"
-         landmarkName = "ppm::ppm(const ppm &amp; image_)"
-         landmarkType = "5">
+         endingLineNumber = "37">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -233,9 +177,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "75"
-         endingLineNumber = "75"
-         landmarkName = "ppm::setSize(size_t width, size_t height)"
-         landmarkType = "5">
+         endingLineNumber = "75">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -246,9 +188,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "46"
-         endingLineNumber = "46"
-         landmarkName = "transformation::operator() (const ppm &amp; image_, bool smooth, ppm &amp; target_)"
-         landmarkType = "5">
+         endingLineNumber = "46">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -259,9 +199,18 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "54"
-         endingLineNumber = "54"
-         landmarkName = "transformation::operator() (const ppm &amp; image_, bool smooth, ppm &amp; target_)"
-         landmarkType = "5">
+         endingLineNumber = "54">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ppm.cpp"
+         timestampString = "473079812.549732"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "318"
+         endingLineNumber = "318">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
