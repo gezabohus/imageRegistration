@@ -261,7 +261,7 @@ namespace imageRegistration
     
     const std::string & getName() const {return _fileName;};
     
-    static void imageRemapSmooth(ppm image_, double x, double y, ppm target_, int i, int j)
+    static void imageRemapSmooth(const ppm & image_, double x, double y, ppm & target_, int i, int j)
     {
       size_t h(image_.getH());
       size_t w(image_.getW());
@@ -293,7 +293,7 @@ namespace imageRegistration
       }
     }
 
-    static void imageRemap(ppm image_, double x, double y, ppm target_, int i, int j) 
+    static void imageRemap(const ppm & image_, double x, double y, ppm & target_, int i, int j)
     {
       size_t h(image_.getH());
       size_t w(image_.getW());
