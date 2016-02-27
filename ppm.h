@@ -53,9 +53,10 @@ namespace imageRegistration
           for (size_t k = 0; k < scale_; ++k)
             for (size_t l = 0; l < scale_; ++l)
             {
-              _dataInt[i][j].r += image_._dataInt[i*scale_ + k][j*scale_ + l].r;
-              _dataInt[i][j].g += image_._dataInt[i*scale_ + k][j*scale_ + l].g;
-              _dataInt[i][j].b += image_._dataInt[i*scale_ + k][j*scale_ + l].b;
+              //_dataInt[i][j].r += image_._dataInt[i*scale_ + k][j*scale_ + l].r;
+              //_dataInt[i][j].g += image_._dataInt[i*scale_ + k][j*scale_ + l].g;
+              //_dataInt[i][j].b += image_._dataInt[i*scale_ + k][j*scale_ + l].b;
+              _dataInt[i][j] += image_._dataInt[i*scale_ + k][j*scale_ + l];
             }
           _dataInt[i][j] /= scale_ * scale_;
         }
@@ -189,9 +190,10 @@ namespace imageRegistration
       ifs.read(data, imageBytes);
       for (size_t i = 0; i<imagePixs; ++i)
       {
-        _dataInt[i / _w][i%_w].r = (int)(unsigned char)data[3 * i];
-        _dataInt[i / _w][i%_w].g = (int)(unsigned char)data[3 * i + 1];
-        _dataInt[i / _w][i%_w].b = (int)(unsigned char)data[3 * i + 2];
+        _dataInt[i / _w][i%_w] = PixelT((int)(unsigned char)data[3 * i], (int)(unsigned char)data[3 * i + 1], (int)(unsigned char)data[3 * i + 2]);
+        //_dataInt[i / _w][i%_w].r = (int)(unsigned char)data[3 * i];
+        //_dataInt[i / _w][i%_w].g = (int)(unsigned char)data[3 * i + 1];
+        //_dataInt[i / _w][i%_w].b = (int)(unsigned char)data[3 * i + 2];
       }
       ifs.close();
 
@@ -209,11 +211,13 @@ namespace imageRegistration
         return 0;
       for (size_t i = 0; i< _w * _h; ++i)
       {
-        const char cr = (const char)(_dataInt[i / _w][i%_w].r);
+        char cr, cg, cb;
+        _dataInt[i / _w][i%_w].write(cr, cg, cb);
+        //const char cr = (const char)(_dataInt[i / _w][i%_w].r);
+        //const char cg = (const char)(_dataInt[i / _w][i%_w].g);
+        //const char cb = (const char)(_dataInt[i / _w][i%_w].b);
         image.write(&cr, 1);
-        const char cg = (const char)(_dataInt[i / _w][i%_w].g);
         image.write(&cg, 1);
-        const char cb = (const char)(_dataInt[i / _w][i%_w].b);
         image.write(&cb, 1);
       }
       return 3 * _w * _h;
@@ -233,16 +237,16 @@ namespace imageRegistration
     }
 
     //void hulyeszin();
-    void hulyeszin()
-    {
-      for (size_t i = 0; i < _w * _h; ++i)
-      {
-        double j = (_dataInt[i / _w][i%_w].r + _dataInt[i / _w][i%_w].g + _dataInt[i / _w][i%_w].b) / 3;
-        _dataInt[i / _w][i%_w].r = j;
-        _dataInt[i / _w][i%_w].g = j;
-        _dataInt[i / _w][i%_w].b = j;
-      }
-    }
+    //void hulyeszin()
+    //{
+    //  for (size_t i = 0; i < _w * _h; ++i)
+    //  {
+    //    double j = (_dataInt[i / _w][i%_w].r + _dataInt[i / _w][i%_w].g + _dataInt[i / _w][i%_w].b) / 3;
+    //    _dataInt[i / _w][i%_w].r = j;
+    //    _dataInt[i / _w][i%_w].g = j;
+    //    _dataInt[i / _w][i%_w].b = j;
+    //  }
+    //}
 
     //void setColor(int x_, int y_, PixelT color_);
     //void reWritePoint(std::pair <int, int> point_, PixelT szin_);

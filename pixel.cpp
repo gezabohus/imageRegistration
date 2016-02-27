@@ -23,15 +23,6 @@ namespace imageRegistration
   //  return c;
   //}
 
-  drgb operator * (const drgb & a, const drgb & b)
-  {
-    drgb c(a);
-    c.r *= b.r;
-    c.g *= b.g;
-    c.b *= b.b;
-    return c;
-  }
-
   //drgb operator / (const drgb & a, int b)
   //{
   //  drgb c(a);
@@ -49,6 +40,15 @@ namespace imageRegistration
   //  c.b -= b;
   //  return c;
   //}
+
+  drgb operator * (const drgb & a, const drgb & b)
+  {
+    drgb c(a);
+    c.r *= b.r;
+    c.g *= b.g;
+    c.b *= b.b;
+    return c;
+  }
 
   drgb & operator += (drgb & a, const drgb & b)
   {
@@ -86,6 +86,95 @@ namespace imageRegistration
   int lMax(drgb point)
   {
     return(int)(std::max(std::max(std::max(point.r, -point.r), std::max(point.g, -point.g)), std::max(point.b, -point.b)));
+  }
+
+  void drgb::write(char & cr, char & cg, char & cb) const
+  {
+    cr = (char)(r);
+    cg = (char)(g);
+    cb = (char)(b);
+  }
+
+  double drgb::gray() const
+  {
+    return (r + g + b) / 3.0;
+  }
+
+  drgb drgb::geomMean(const drgb& a, const drgb& b)
+  {
+    return drgb (pow(a.r * b.r, 0.5), pow(a.g * b.g, 0.5), pow(a.b * b.b, 0.5));
+  }
+
+  void drgb::piecewiseDiv(drgb& a, const drgb& b)
+  {
+    if (b.r * b.g * b.b == 0.0)
+      throw("division with 0, exiting");
+    a.r /= b.r;
+    a.g /= b.g;
+    a.b /= b.b;
+    return;
+  }
+
+  dGray operator * (const dGray & a, const dGray & b)
+  {
+    dGray c(a);
+    c.scale *= b.scale;
+    return c;
+  }
+
+  dGray & operator += (dGray & a, const dGray & b)
+  {
+    a.scale += b.scale;
+    return a;
+  }
+
+  dGray & operator -= (dGray & a, const dGray & b)
+  {
+    a.scale -= b.scale;
+    return a;
+  }
+
+  dGray & operator /= (dGray & a, const int & b)
+  {
+    a.scale /= b;
+    return a;
+  }
+
+  dGray & operator *= (dGray & a, const double & b)
+  {
+    a.scale *= b;
+    return a;
+  }
+
+  /// Find the maximum color level of a double rgb pixel.
+  int lMax(dGray point)
+  {
+    return(int)(std::max(-point.scale, point.scale));
+  }
+
+  void dGray::write(char & cr, char & cg, char & cb) const
+  {
+    cr = (char)(scale);
+    cg = (char)(scale);
+    cb = (char)(scale);
+  }
+
+  double dGray::gray() const
+  {
+    return scale;
+  }
+
+  dGray dGray::geomMean(const dGray& a, const dGray& b)
+  {
+    return dGray(pow(a.scale * b.scale, 0.5));
+  }
+
+  void dGray::piecewiseDiv(dGray& a, const dGray& b)
+  {
+    if (b.scale == 0.0)
+      throw("division with 0, exiting");
+    a.scale /= b.scale;
+    return;
   }
 
 }

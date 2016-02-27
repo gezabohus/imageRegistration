@@ -27,7 +27,7 @@ namespace imageRegistration
   {
   public:
     void setAngle(double angle_) { _angle = angle_; if(std::abs(_angle > 1)) throw; }
-    void setOrigin(std::pair < int, int > origin_) { _origin.first = _origin.second = 0; }
+    void setOrigin(std::pair < int, int > origin_) { _origin.first = origin_.first; _origin.second = origin_.second; }
     void setVector(std::pair < int, int > vector_) { _vector.first = vector_.first; _vector.second = vector_.second; }
     void setLevel(size_t level_) { _level = level_; }
     //void setAll(double a_, int ox_, int oy_, int vx_, int vy_);
@@ -225,11 +225,13 @@ namespace imageRegistration
       coVar /= numPoints;
       coVar -= firstM * secondM;
       corr = coVar;
-      corr.r /= pow((double)(firstV.r * secondV.r), 0.5);
-      corr.g /= pow((double)(firstV.g * secondV.g), 0.5);
-      corr.b /= pow((double)(firstV.b * secondV.b), 0.5);
+      typename PictureT::pixelType devProd = typename PictureT::pixelType::geomMean(firstV, secondV);
+      typename PictureT::pixelType::piecewiseDiv(corr, devProd);
+      //corr.r /= pow((double)(firstV.r * secondV.r), 0.5);
+      //corr.g /= pow((double)(firstV.g * secondV.g), 0.5);
+      //corr.b /= pow((double)(firstV.b * secondV.b), 0.5);
     }
-    return((corr.r + corr.g + corr.b) / 3);
+    return corr.gray();
   }
 
   template < class PictureT >
