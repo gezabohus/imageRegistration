@@ -225,8 +225,8 @@ namespace imageRegistration
       coVar /= numPoints;
       coVar -= firstM * secondM;
       corr = coVar;
-      typename PictureT::pixelType devProd = typename PictureT::pixelType::geomMean(firstV, secondV);
-      typename PictureT::pixelType::piecewiseDiv(corr, devProd);
+      typename PictureT::pixelType devProd = PictureT::pixelType::geomMean(firstV, secondV);
+      PictureT::pixelType::piecewiseDiv(corr, devProd);
       //corr.r /= pow((double)(firstV.r * secondV.r), 0.5);
       //corr.g /= pow((double)(firstV.g * secondV.g), 0.5);
       //corr.b /= pow((double)(firstV.b * secondV.b), 0.5);
@@ -237,8 +237,8 @@ namespace imageRegistration
   template < class PictureT >
   transformation< PictureT > bruteForceBase(const PictureT & firstPic, const PictureT & secondPic)
   {
-    firstPic.write("/tmp/1.ppm");
-    secondPic.write("/tmp/2.ppm");
+//    firstPic.write("/tmp/1.ppm");
+//    secondPic.write("/tmp/2.ppm");
     const int originXmin = 0; //(int) secondPic.getH() / 2;
     const int originYmin = 0; //(int) secondPic.getW() / 2;
     const int originXmax = originXmin + 1;

@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 
 #include "pixel.h"
 
@@ -102,7 +103,7 @@ namespace imageRegistration
 
   drgb drgb::geomMean(const drgb& a, const drgb& b)
   {
-    return drgb (pow(a.r * b.r, 0.5), pow(a.g * b.g, 0.5), pow(a.b * b.b, 0.5));
+    return drgb (std::sqrt(a.r * b.r), std::sqrt(a.g * b.g), std::sqrt(a.b * b.b));
   }
 
   void drgb::piecewiseDiv(drgb& a, const drgb& b)
@@ -166,7 +167,7 @@ namespace imageRegistration
 
   dGray dGray::geomMean(const dGray& a, const dGray& b)
   {
-    return dGray(pow(a.scale * b.scale, 0.5));
+    return dGray(std::sqrt(a.scale * b.scale));
   }
 
   void dGray::piecewiseDiv(dGray& a, const dGray& b)
