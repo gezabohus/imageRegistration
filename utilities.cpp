@@ -15,14 +15,16 @@ namespace imageRegistration {
 
 std::string transformString(const std::string & s_, const char * tr_)
 {
-  const char * lastDot = strrchr(s_.c_str(), '.');
-  int offSet(0);
-  if(lastDot)
-    offSet = lastDot - (s_.c_str());
-  std::string destination(s_);
-  destination.resize(offSet);
-  destination += tr_;
-  destination += s_.substr(offSet, s_.size() - offSet);
+  //const char * lastDot = strrchr(s_.c_str(), '.');
+  //int offSet(0);
+  //if(lastDot)
+  //  offSet = lastDot - (s_.c_str());
+  //std::string destination(s_);
+  //destination.resize(offSet);
+  //destination += tr_;
+  //destination += s_.substr(offSet, s_.size() - offSet);
+  std::string destination(tr_);
+  destination += s_;
   return destination;
  
 }

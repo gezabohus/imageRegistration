@@ -66,7 +66,7 @@ int main(int argc_, char** argv_)
     kep2 = name2;
     transformation< ppm<pixT> > goodtraf = findBest(kep1, kep2);
     //transformationRecord< pixT > trR(goodtraf, name1, name2);
-    goodtraf(kep2, false, kep1);
+    goodtraf(kep2, true, kep1);
     destination = transformString(name2);
     kep1.write(destination);
     std::cout << "Wrote " << destination.c_str() << ".\n";
