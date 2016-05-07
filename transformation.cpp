@@ -13,9 +13,6 @@
 
 namespace imageRegistration
 {
-
   template<> std::pair < int, int > transformation< ppm<drgb> >::_origin = std::pair < int, int >(0, 0);
   template<> std::pair < int, int > transformation< ppm<dGray> >::_origin = std::pair < int, int >(0, 0);
-
-
 } // namespace imageRegistration

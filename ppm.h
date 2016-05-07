@@ -159,6 +159,7 @@ namespace imageRegistration
     //size_t write(const std::string & filename_) const;
     size_t read(const std::string &filename_)
     {
+      _fileName = filename_;
       const int readBufferSize = 1000;
       std::ifstream ifs(filename_.c_str(), std::ios_base::binary);
       char buffer[readBufferSize];
@@ -342,7 +343,7 @@ namespace imageRegistration
       _pics.resize(numIter);
       _pics[0] = &image_;
       scale();
-      writeAll();
+      writeAll(image_.getName());
     }
 
     ppmArray() {}
@@ -360,20 +361,19 @@ namespace imageRegistration
       }
     }
 
-    PictureT getPic(size_t which_) { return *_pics[which_]; }
-    size_t howManyLevels() { return _numLevels; }
+    PictureT getPic(size_t which_) const { return *_pics[which_]; }
+    size_t getNumLevels() const { return _numLevels; }
     void picToFile(size_t which_, const std::string & filename_) { (*_pics[which_]).write(filename_); }
     const PictureT & getLastPic() const { return *_pics[_numLevels - 1]; }
     /// For debugging purposes.
     //void writeAll() const;
-    void writeAll() const
+    void writeAll(const std::string &prefix) const
     {
       //char buffer[500];
       for (int k = 0; k < _pics.size(); ++k)
       {
-        //sprintf(buffer, "/tmp/dummy-%d.ppm", k);
         std::stringstream fns;
-        fns << "/tmp/dummy-" << k << ".ppm";
+        fns<< "/tmp/dummy-" << prefix << "_" << k << ".ppm";
         //std::string fileName(buffer);
         std::string fileName = fns.str().c_str();
         _pics[k]->write(fileName);

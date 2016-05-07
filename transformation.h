@@ -18,19 +18,20 @@
 
 namespace imageRegistration
 {
-
-  
   
   /// A transformation is a translation and rotation of the plane.
   template <class PictureT>
   class transformation
   {
   public:
+    transformation( double angle_, std::pair < int , int > origin_, std::pair < int , int > vector_, size_t level_ ) :
+    _angle(angle_), /*_origin(origin_),*/ _vector(vector_), _level(level_){if(std::abs(_angle > 1)) throw; }
+
     void setAngle(double angle_) { _angle = angle_; if(std::abs(_angle > 1)) throw; }
     void setOrigin(std::pair < int, int > origin_) { _origin.first = origin_.first; _origin.second = origin_.second; }
     void setVector(std::pair < int, int > vector_) { _vector.first = vector_.first; _vector.second = vector_.second; }
     void setLevel(size_t level_) { _level = level_; }
-    //void setAll(double a_, int ox_, int oy_, int vx_, int vy_);
+
     void setAll(double a_, int ox_, int oy_, int vx_, int vy_)
     {
       _angle = a_;
@@ -40,19 +41,14 @@ namespace imageRegistration
       _vector.first = vx_;
       _vector.second = vy_;
     }
+
     double getAngle() const { return _angle; }
     std::pair < int, int > getOrigin() const { return _origin; }
     std::pair < int, int > getVector() const { return _vector; }
     size_t getLevel() const { return _level; }
-    void getTraf() { std::cout << _angle << ", (" << _origin.first << ", " << _origin.second << "), (" << _vector.first << ", " << _vector.second << ")\n"; }
-    transformation( double angle_, std::pair < int , int > origin_, std::pair < int , int > vector_, size_t level_ ) :
-    _angle(angle_), /*_origin(origin_),*/ _vector(vector_), _level(level_){if(std::abs(_angle > 1)) throw; }
-    // transformation();
-    //    ~transformation();
-
-    /// Inverse transform an image by rotating around _origin and translating by _vector. 
-    /// The source image is 
-    //PictureT operator() (const PictureT & image_, bool smooth, PictureT & target_) const ;
+    void writeTraf() const { std::cout << _angle << ", (" << _origin.first << ", " << _origin.second << "), (" << _vector.first << ", " << _vector.second << ")\n"; }
+    
+    /// Inverse transform an image by rotating around _origin and translating by _vector.
     PictureT operator() (const PictureT & image_, bool smooth, PictureT & target_) const
     {
       size_t h(image_.getH());
@@ -88,17 +84,6 @@ namespace imageRegistration
 
     /// Transform a point by rotating it around the _origin and translating by _vector. Does not
     /// check if we're outside of the image. Output the new coordinates.
-    //std::pair < int, int > operator() (const std::pair < size_t, size_t > &) const ;
-    std::pair < int, int > operator() (const std::pair < size_t, size_t > & point_) const
-    {
-      std::pair < int, int > point;
-      double c(cos(_angle));
-      double s(sin(_angle));
-      point.first = (int)((((int)point_.first - _origin.first)) *        c + (((int)point_.second - _origin.second)) *  s + _origin.first + _vector.first + 0.5);
-      point.second = (int)((((int)point_.first - _origin.first)) * (-1) * s + (((int)point_.second - _origin.second)) *  c + _origin.second + _vector.second + 0.5);
-      return point;
-    }
-    //std::vector <int > operator() (const std::vector  <int > &) const ;
     std::vector <int > operator() (const std::vector  <int > & point_) const
     {
       std::vector < int> point(2);
@@ -108,7 +93,7 @@ namespace imageRegistration
       point[1] = (int)(((point_[0] - _origin.first)) * (-1) * s + ((point_[1] - _origin.second)) *  c + _origin.second + _vector.second + 0.5);
       return point;
     }
-    //transformation inverse();
+
     transformation inverse()
     {
       double angle;
@@ -123,8 +108,8 @@ namespace imageRegistration
       transformation transf(angle, origin, vector, level);
       return transf;
     }
-    //void goOut(size_t scale_);
-    void goOut(int scale_)
+
+    void scale(int scale_)
     {
       if (_level != 0)
       {
@@ -139,7 +124,7 @@ namespace imageRegistration
         printf("Already at level 0!\n");
       }
     }
-    //void write(std::string fn_) const ;
+
     /// oldschool write
     void write(std::string fn_) const
     {
@@ -152,7 +137,7 @@ namespace imageRegistration
       fwrite(&_vector.second, sizeof(int), 1, file);
       fwrite(&_level, sizeof(size_t), 1, file);
     }
-    //void read(std::string fn_);
+
     void read(std::string fn_)
     {
       std::FILE *file;
@@ -164,7 +149,7 @@ namespace imageRegistration
       fread(&_vector.second, sizeof(int), 1, file);
       fread(&_level, sizeof(size_t), 1, file);
     }
-    //void write(std::ostream & out_) const;
+
     void write(std::ostream & out_) const
     {
       out_ << _angle << _origin.first << _origin.second << _vector.first << _vector.second <<
@@ -339,22 +324,22 @@ namespace imageRegistration
 
   template < class PictureT >
   //transformation< PictureT > findBest(PictureT & firstPic, PictureT & secondPic);
-  transformation< PictureT > findBest(PictureT & firstPic, PictureT & secondPic)
+  transformation< PictureT > findBest(const PictureT & firstPic, PictureT & secondPic)
   {
-    ppmArray< PictureT > firstPics(firstPic, 8);
+    const ppmArray< PictureT > firstPics(firstPic, 8);
     ppmArray< PictureT > secondPics(secondPic, 8);
-    size_t depth = firstPics.howManyLevels();
+    size_t depth = firstPics.getNumLevels();
     std::cout << depth << "   ";
-    firstPics.getLastPic().write("/tmp/1.ppm");
-    secondPics.getLastPic().write("/tmp/2.ppm");
-    transformation< PictureT > goodtraf = bruteForceBase(firstPics.getLastPic(), secondPics.getLastPic());
-    goodtraf.setAll(0, 0, 0, 0, 0);
-    goodtraf.setLevel(depth - 1);
+//    firstPics.getLastPic().write("/tmp/1.ppm");
+//    secondPics.getLastPic().write("/tmp/2.ppm");
+//    transformation< PictureT > goodtraf = bruteForceBase(firstPics.getLastPic(), secondPics.getLastPic());
+//    goodtraf.setLevel(depth - 1);
+    transformation< PictureT > goodtraf(0, std::pair<double,double>(0.0, 0.0), std::pair<double,double>(0.0, 0.0), depth - 1);
     for (size_t i = 1; (int)i < (int)depth; ++i)
     {
       std::cout << i << " ";
       std::cout.flush();
-      goodtraf.goOut(2);
+      goodtraf.scale(2);
       goodtraf = oneStep(firstPics.getPic(depth - 1 - i), secondPics.getPic(depth - 1 - i), goodtraf);
       //    pic
       goodtraf.setLevel(depth - 1 - i);

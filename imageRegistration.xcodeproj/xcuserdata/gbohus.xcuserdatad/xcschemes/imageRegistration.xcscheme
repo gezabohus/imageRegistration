@@ -43,7 +43,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/gbohus/Pictures/constructionImages/allPPM/ConvertedFiles_grey"
+      customWorkingDirectory = "/Volumes/HD/Users/gbohus/Pictures/constructionImages/allPPM/ConvertedFiles_grey"
       buildConfiguration = "Development"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"

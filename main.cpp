@@ -52,8 +52,9 @@ int main(int argc_, char** argv_)
   typedef dGray pixT;
 
   /// We walk on the list of names. For a pair of images (starting with the first two, we
-  /// transformt the second to match the first. We write it out, make it the first image of
-  /// the next pair.
+  /// transform the second one to match the first. We write it out and make it the first
+  /// image of the next pair.
+  
   source1 = *filenames.begin();
 	ppm< pixT > kep1(source1), kep2;
   std::string name1(*filenames.begin());
@@ -68,7 +69,7 @@ int main(int argc_, char** argv_)
     //transformationRecord< pixT > trR(goodtraf, name1, name2);
     goodtraf(kep2, true, kep1);
     destination = transformString(name2);
-    kep1.write(destination);
+    kep2.write(destination);
     std::cout << "Wrote " << destination.c_str() << ".\n";
     kep1 = kep2;
     name1 = name2;

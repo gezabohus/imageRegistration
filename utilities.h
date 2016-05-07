@@ -45,7 +45,7 @@ double corr(const std::vector<T> & v, const std::vector<T> & w)
 
 
   /// Insert tr_ at the beginning of a filename, even if given by full path. (Slash delimited.)
-std::string transformString(const std::string & s_, const char * tr_ = "_tr");
+std::string transformString(const std::string & s_, const char * tr_ = "tr_");
 
 
   template <class T>
