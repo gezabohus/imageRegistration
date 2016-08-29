@@ -1,0 +1,4 @@
+#/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/test.pgms/n-1.PPM
+#/Volumes/HD/Users/gbohus/Documents/projects/imageRegistration/test.pgms/n-2.PPM
+n-1.PPM
+n-2.PPM
