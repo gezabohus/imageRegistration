@@ -31,12 +31,12 @@ std::string transformString(const std::string & s_, const char * tr_)
 
 double absAverageDiff(const double & t0, const double & t1)
 {
-  return abs(t0 - t1);
+  return std::abs(t0 - t1);
 }
   
 double absAverageDiff(const drgb & t0, const drgb & t1)
 {
-  return abs(t0.r - t1.r);
+  return std::abs(t0.r - t1.r);
 }
   
 } //namespace imageRegistration
