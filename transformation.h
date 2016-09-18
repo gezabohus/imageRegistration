@@ -152,8 +152,8 @@ namespace imageRegistration
 
     void write(std::ostream & out_) const
     {
-      out_ << _angle << _origin.first << _origin.second << _vector.first << _vector.second <<
-        _level;
+      out_ << _angle << "\n" << _origin.first << "\n"  << _origin.second << "\n"
+        << _vector.first << "\n"  << _vector.second << "\n"  << _level;
     }
 
   private:
@@ -297,7 +297,7 @@ namespace imageRegistration
       for (int vecy = trans.getVector().second - 1; vecy < trans.getVector().second + 2; ++vecy)
         // Since the best guess for the angle is the previous one, we start with that only go in the direction
         // where there is an improvement. This takes some logic.
-        for (double ang = trans.getAngle() - 2 * anglestep; ang < trans.getAngle() + 3 * anglestep; ang += anglestep / 2)
+        for (double ang = trans.getAngle() - 2 * anglestep; ang < trans.getAngle() + 2.9 * anglestep; ang += anglestep / 2)
         {
           traf.setAngle(ang);
           traf.setOrigin(ori);
@@ -319,6 +319,9 @@ namespace imageRegistration
     PictureT sp;
     trans(secondPic, false, sp);
     sp.write("/tmp/2.ppm");
+    std::ofstream out("/tmp/traf.txt");
+    bestTraf.write(out);
+    out.flush();
     return bestTraf;
 
   }

@@ -84,6 +84,8 @@ int main(int argc_, char** argv_)
     std::string & name2(*i);
     kep2 = name2;
     transformation< ppm<pixT> > goodtraf = findBest(kep1, kep2);
+    std::ofstream out("/tmp/best_tr.txt");
+    goodtraf.write(out);
     //transformationRecord< pixT > trR(goodtraf, name1, name2);
     goodtraf(kep2, true, kep1);
     destination = transformString(name2);
