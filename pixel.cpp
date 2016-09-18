@@ -3,6 +3,8 @@
 
 #include "pixel.h"
 
+using namespace std;
+
 namespace imageRegistration
 {
 
@@ -83,10 +85,20 @@ namespace imageRegistration
     return a;
   }
 
+  drgb& operator /= (drgb& a, const drgb& b)
+  {
+    if ((b.r == 0.0) || (b.g == 0.0) || (b.b == 0.0))
+      throw("division with 0, exiting");
+    a.r /= b.r;
+    a.g /= b.g;
+    a.b /= b.b;
+    return a;
+  }
+
   /// Find the maximum color level of a double rgb pixel.
   int lMax(drgb point)
   {
-    return(int)(std::max(std::max(std::max(point.r, -point.r), std::max(point.g, -point.g)), std::max(point.b, -point.b)));
+    return(int)(max(max(max(point.r, -point.r), max(point.g, -point.g)), max(point.b, -point.b)));
   }
 
   void drgb::write(char & cr, char & cg, char & cb) const
@@ -103,18 +115,18 @@ namespace imageRegistration
 
   drgb drgb::geomMean(const drgb& a, const drgb& b)
   {
-    return drgb (std::sqrt(a.r * b.r), std::sqrt(a.g * b.g), std::sqrt(a.b * b.b));
+    return drgb (sqrt(a.r * b.r), sqrt(a.g * b.g), sqrt(a.b * b.b));
   }
 
-  void drgb::piecewiseDiv(drgb& a, const drgb& b)
-  {
-    if (b.r * b.g * b.b == 0.0)
-      throw("division with 0, exiting");
-    a.r /= b.r;
-    a.g /= b.g;
-    a.b /= b.b;
-    return;
-  }
+  //void drgb::piecewiseDiv(drgb& a, const drgb& b)
+  //{
+  //  if (b.r * b.g * b.b == 0.0)
+  //    throw("division with 0, exiting");
+  //  a.r /= b.r;
+  //  a.g /= b.g;
+  //  a.b /= b.b;
+  //  return;
+  //}
 
   dGray operator * (const dGray & a, const dGray & b)
   {
@@ -147,10 +159,18 @@ namespace imageRegistration
     return a;
   }
 
+  dGray & operator /= (dGray& a, const dGray& b)
+  {
+    if (b.scale == 0.0)
+      throw("division with 0, exiting");
+    a.scale /= b.scale;
+    return a;
+  }
+
   /// Find the maximum color level of a double rgb pixel.
   int lMax(dGray point)
   {
-    return(int)(std::max(-point.scale, point.scale));
+    return(int)(max(-point.scale, point.scale));
   }
 
   void dGray::write(char & cr, char & cg, char & cb) const
@@ -167,15 +187,15 @@ namespace imageRegistration
 
   dGray dGray::geomMean(const dGray& a, const dGray& b)
   {
-    return dGray(std::sqrt(a.scale * b.scale));
+    return dGray(sqrt(a.scale * b.scale));
   }
 
-  void dGray::piecewiseDiv(dGray& a, const dGray& b)
-  {
-    if (b.scale == 0.0)
-      throw("division with 0, exiting");
-    a.scale /= b.scale;
-    return;
-  }
+  //void dGray::piecewiseDiv(dGray& a, const dGray& b)
+  //{
+  //  if (b.scale == 0.0)
+  //    throw("division with 0, exiting");
+  //  a.scale /= b.scale;
+  //  return;
+  //}
 
 }

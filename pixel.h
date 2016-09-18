@@ -19,7 +19,7 @@ struct drgb
   void write(char& cr, char& cg, char& cb) const;
   double gray() const;
   static drgb geomMean(const drgb& a, const drgb& b);
-  static void piecewiseDiv(drgb& a, const drgb& b);
+  //static void piecewiseDiv(drgb& a, const drgb& b);
 };
 
 drgb operator * (const drgb & a, const drgb & b);
@@ -30,6 +30,7 @@ drgb & operator += (drgb & a, const drgb & b);
 drgb & operator -= (drgb & a, const drgb & b);
 drgb & operator *= (drgb & a, const double & b);
 drgb & operator /= (drgb & a, const int & b);
+drgb & operator /= (drgb & a, const drgb & b);
 int lMax(drgb point);
 
 struct dGray
@@ -41,7 +42,7 @@ struct dGray
   void write(char& cr, char& cg, char& cb) const;
   double gray() const;
   static dGray geomMean(const dGray& a, const dGray& b);
-  static void piecewiseDiv(dGray& a, const dGray& b);
+  //static void piecewiseDiv(dGray& a, const dGray& b);
 };
 
 dGray operator * (const dGray & a, const dGray & b);
@@ -52,6 +53,7 @@ dGray & operator += (dGray & a, const dGray & b);
 dGray & operator -= (dGray & a, const dGray & b);
 dGray & operator *= (dGray & a, const double & b);
 dGray & operator /= (dGray & a, const int & b);
+dGray & operator /= (dGray & a, const dGray & b);
 int lMax(dGray point);
 
 } // namespace

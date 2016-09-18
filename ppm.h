@@ -40,25 +40,52 @@ namespace imageRegistration
 
     ppm(const ppm & image_, int scale_)
     {
+      if (scale_ <= 0)
+        throw std::ios_base::failure("Sorry, " + std::to_string(scale_) + " is an invalid scale!\n");
+
       _w = image_._w / scale_;
+      bool lastWPieceBigger = (image_._w % scale_ != 0);
       _h = image_._h / scale_;
+      bool lastHPieceBigger = (image_._h % scale_ != 0);
+
       std::vector < PixelT > dummy(_w);
       _dataInt = std::vector < std::vector < PixelT > >(_h, dummy);
+      
+      typedef std::vector < std::pair < size_t, size_t > > pxGroup;
+      std::vector < pxGroup > pixelGroupRowDummy(_w);
+      std::vector < std::vector < pxGroup > > pixelGroups(_h, pixelGroupRowDummy);
+
       PixelT black(0);
+
 
       for (size_t i = 0; i < _h; ++i)
         for (size_t j = 0; j < _w; ++j)
         {
-          _dataInt[i][j] = black;
-          for (size_t k = 0; k < scale_; ++k)
-            for (size_t l = 0; l < scale_; ++l)
+          //collecting group indices
+          int groupWSize = scale_ + (lastWPieceBigger && (j == _w - 1)) ? (image_._w % scale_) : 0;
+          int groupHSize = scale_ + (lastHPieceBigger && (i == _h - 1)) ? (image_._h % scale_) : 0;
+          for (size_t k = 0; k < groupHSize; ++k)
+            for (size_t l = 0; l < groupWSize; ++l)
             {
               //_dataInt[i][j].r += image_._dataInt[i*scale_ + k][j*scale_ + l].r;
               //_dataInt[i][j].g += image_._dataInt[i*scale_ + k][j*scale_ + l].g;
               //_dataInt[i][j].b += image_._dataInt[i*scale_ + k][j*scale_ + l].b;
-              _dataInt[i][j] += image_._dataInt[i*scale_ + k][j*scale_ + l];
+
+              pixelGroups[i][j].push_back(std::pair<size_t, size_t>(i*scale_ + k, j*scale_ + l));
+              //_dataInt[i][j] += image_._dataInt[i*scale_ + k][j*scale_ + l];
             }
-          _dataInt[i][j] /= scale_ * scale_;
+
+          if (pixelGroups[i][j].size() == 0)
+            throw std::ios_base::failure("Empty pixel group at (" + std::to_string(i) + ", " + std::to_string(j) + ")!\n");
+
+          //combining group
+          _dataInt[i][j] = black;
+          for (size_t m = 0; m < pixelGroups[i][j].size(); ++m)
+          {
+            _dataInt[i][j] += image_._dataInt[pixelGroups[i][j][m].first][pixelGroups[i][j][m].second];
+          }
+          //_dataInt[i][j] /= scale_ * scale_;
+          _dataInt[i][j] /= pixelGroups[i][j].size();
         }
     }
 
