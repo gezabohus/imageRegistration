@@ -62,8 +62,8 @@ namespace imageRegistration
         for (size_t j = 0; j < _w; ++j)
         {
           //collecting group indices
-          int groupWSize = scale_ + (lastWPieceBigger && (j == _w - 1)) ? (image_._w % scale_) : 0;
-          int groupHSize = scale_ + (lastHPieceBigger && (i == _h - 1)) ? (image_._h % scale_) : 0;
+          int groupWSize = scale_ + ((lastWPieceBigger && (j == _w - 1)) ? (image_._w % scale_) : 0);
+          int groupHSize = scale_ + ((lastHPieceBigger && (i == _h - 1)) ? (image_._h % scale_) : 0);
           for (size_t k = 0; k < groupHSize; ++k)
             for (size_t l = 0; l < groupWSize; ++l)
             {
@@ -400,7 +400,7 @@ namespace imageRegistration
       for (int k = 0; k < _pics.size(); ++k)
       {
         std::stringstream fns;
-        fns<< "/tmp/dummy-" << prefix << "_" << k << ".ppm";
+        fns<< "./tmp/dummy-" << k << "_" << prefix << ".ppm";
         //std::string fileName(buffer);
         std::string fileName = fns.str().c_str();
         _pics[k]->write(fileName);

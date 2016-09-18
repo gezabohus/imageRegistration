@@ -346,8 +346,8 @@ namespace imageRegistration
       goodtraf.setLevel(depth - 1 - i);
     }
     // write out pics for debugging purposes
-    //  firstPics.writeAll();
-    //  secondPics.writeAll();
+    firstPics.writeAll("");
+    secondPics.writeAll("");
     std::cout << "\n";
     return goodtraf;
   }
