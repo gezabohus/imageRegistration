@@ -9,8 +9,26 @@
 #include "transformation.h"
 #include "transformationRecord.h"
 
+
+#ifdef _WIN32
+  #include <direct.h>
+  #define getcwd _getcwd // stupid MSFT "deprecation" warning
+#else
+  #include <unistd.h>
+#endif
+
+
+std::string get_cwd()
+{
+  std::string s_cwd(getcwd(NULL,0));
+//  std::cout << "CWD is: " << s_cwd << std::endl;
+  return s_cwd;
+}
+
 int main(int argc_, char** argv_)
 {
+  std::string cwd(get_cwd());
+  
   using namespace imageRegistration;
 	std::string source1, source2;
   std::vector<std::string> filenames;

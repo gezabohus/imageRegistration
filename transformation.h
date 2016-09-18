@@ -25,9 +25,9 @@ namespace imageRegistration
   {
   public:
     transformation( double angle_, std::pair < int , int > origin_, std::pair < int , int > vector_, size_t level_ ) :
-    _angle(angle_), /*_origin(origin_),*/ _vector(vector_), _level(level_){if(std::abs(_angle > 1)) throw; }
+    _angle(angle_), /*_origin(origin_),*/ _vector(vector_), _level(level_){if(std::abs(_angle) > 1) throw; }
 
-    void setAngle(double angle_) { _angle = angle_; if(std::abs(_angle > 1)) throw; }
+    void setAngle(double angle_) { _angle = angle_; if(std::abs(_angle) > 1) throw; }
     void setOrigin(std::pair < int, int > origin_) { _origin.first = origin_.first; _origin.second = origin_.second; }
     void setVector(std::pair < int, int > vector_) { _vector.first = vector_.first; _vector.second = vector_.second; }
     void setLevel(size_t level_) { _level = level_; }
