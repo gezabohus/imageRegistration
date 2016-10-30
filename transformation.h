@@ -19,7 +19,7 @@
 namespace imageRegistration
 {
   
-  /// A transformation is a translation and rotation of the plane.
+  /// A transformation is a translation and rotation of the plane.   TODO: change translation units to picture width or height
   template <class PictureT>
   class transformation
   {
@@ -109,7 +109,7 @@ namespace imageRegistration
       return transf;
     }
 
-    void scale(int scale_)
+    void reScale(int scale_)
     {
       if (_level != 0)
       {
@@ -150,10 +150,13 @@ namespace imageRegistration
       fread(&_level, sizeof(size_t), 1, file);
     }
 
-    void write(std::ostream & out_) const
+    void write(std::ostream & out_, std::string comment = "") const
     {
-      out_ << _angle << "\n" << _origin.first << "\n"  << _origin.second << "\n"
-        << _vector.first << "\n"  << _vector.second << "\n"  << _level;
+      out_ << comment << "\n";
+      out_ << "angle: " << _angle << "\n";
+      out_ << "origin: (" << _origin.first << ", " << _origin.second << ")\n";
+      out_ << "translation: (" << _vector.first << ", " << _vector.second << ")\n";
+      out_ << "level:"  << _level << "\n";
     }
 
   private:
@@ -297,7 +300,7 @@ namespace imageRegistration
       for (int vecy = trans.getVector().second - 1; vecy < trans.getVector().second + 2; ++vecy)
         // Since the best guess for the angle is the previous one, we start with that only go in the direction
         // where there is an improvement. This takes some logic.
-        for (double ang = trans.getAngle() - 2 * anglestep; ang < trans.getAngle() + 2.9 * anglestep; ang += anglestep / 2)
+        for (double ang = trans.getAngle() - 2 * anglestep; ang < trans.getAngle() + 2.1 * anglestep; ang += anglestep / 2)
         {
           traf.setAngle(ang);
           traf.setOrigin(ori);
@@ -314,26 +317,18 @@ namespace imageRegistration
           }
         }
     transformation< PictureT > bestTraf(bestAng, bestOri, bestVec, 0);
-    // dump the two pics
-    firstPic.write("/tmp/1.ppm");
-    PictureT sp;
-    trans(secondPic, false, sp);
-    sp.write("/tmp/2.ppm");
-    std::ofstream out("/tmp/traf.txt");
-    bestTraf.write(out);
-    out.flush();
     return bestTraf;
-
   }
 
   template < class PictureT >
   //transformation< PictureT > findBest(PictureT & firstPic, PictureT & secondPic);
   transformation< PictureT > findBest(const PictureT & firstPic, PictureT & secondPic)
   {
-    const ppmArray< PictureT > firstPics(firstPic, 8);
-    ppmArray< PictureT > secondPics(secondPic, 8);
+    size_t minSize = 8;
+    const ppmArray< PictureT > firstPics(firstPic, minSize);
+    ppmArray< PictureT > secondPics(secondPic, minSize);
     size_t depth = firstPics.getNumLevels();
-    std::cout << depth << "   ";
+    std::cout << "No. of levels: " << depth << "\n";
 //    firstPics.getLastPic().write("/tmp/1.ppm");
 //    secondPics.getLastPic().write("/tmp/2.ppm");
 //    transformation< PictureT > goodtraf = bruteForceBase(firstPics.getLastPic(), secondPics.getLastPic());
@@ -342,15 +337,28 @@ namespace imageRegistration
     for (size_t i = 1; (int)i < (int)depth; ++i)
     {
       std::cout << i << " ";
-      std::cout.flush();
-      goodtraf.scale(2);
+      goodtraf.reScale(2);
       goodtraf = oneStep(firstPics.getPic(depth - 1 - i), secondPics.getPic(depth - 1 - i), goodtraf);
+      // dump the two pics
+      static int counter = 0;
+      firstPics.getPic(depth - 1 - i).write("/tmp/matchPair" + std::to_string(counter) + "_1.ppm");
+      PictureT sp;
+      goodtraf(secondPics.getPic(depth - 1 - i), true, sp);
+      sp.write("/tmp/matchPair" + std::to_string(counter) + "_2.ppm");
+      std::ofstream out("/tmp/matchPair_traf" + std::to_string(counter) + ".txt");
+      goodtraf.write(out);
+      out.flush();
+      ++counter;
       //    pic
       goodtraf.setLevel(depth - 1 - i);
     }
-    // write out pics for debugging purposes
-    firstPics.writeAll("");
-    secondPics.writeAll("");
+    //// write out pics for debugging purposes
+    //static int counter = 0;
+    //std::string counterStr = std::to_string(counter);
+    //firstPics.writeAll(counterStr);
+    //secondPics.writeAll(counterStr);
+    //++counter;
+
     std::cout << "\n";
     return goodtraf;
   }

@@ -18,11 +18,11 @@ namespace imageRegistration
 
   
 
-  //ppm operator = (ppm & image, const ppm & osKep)
+  //ppm operator = (ppm & image, const ppm & sourcePic)
   //{
-  //  image._w = osKep.getW();
-  //  image._h = osKep.getH();
-  //  image._dataInt = osKep.getData();
+  //  image._w = sourcePic.getW();
+  //  image._h = sourcePic.getH();
+  //  image._dataInt = sourcePic.getData();
   //}
 
 

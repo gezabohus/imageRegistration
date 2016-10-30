@@ -35,10 +35,10 @@ int lMax(drgb point);
 
 struct dGray
 {
-  double scale;
-  dGray() : scale(0) {}
-  dGray(double scale_) : scale(scale_) {}
-  dGray(double ar_, double ag_, double ab_, double wr_ = 1.0, double wg_ = 1.0, double wb_ = 1.0) : scale( (ar_ * wr_ + ag_ * wg_ + ab_ * wb_) / (wr_ + wg_ + wb_) ) {}
+  double grayValue;
+  dGray() : grayValue(0) {}
+  dGray(double grayValue_) : grayValue(grayValue_) {}
+  dGray(double ar_, double ag_, double ab_, double wr_ = 1.0, double wg_ = 1.0, double wb_ = 1.0) : grayValue( (ar_ * wr_ + ag_ * wg_ + ab_ * wb_) / (wr_ + wg_ + wb_) ) {}
   void write(char& cr, char& cg, char& cb) const;
   double gray() const;
   static dGray geomMean(const dGray& a, const dGray& b);

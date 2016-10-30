@@ -131,70 +131,70 @@ namespace imageRegistration
   dGray operator * (const dGray & a, const dGray & b)
   {
     dGray c(a);
-    c.scale *= b.scale;
+    c.grayValue *= b.grayValue;
     return c;
   }
 
   dGray & operator += (dGray & a, const dGray & b)
   {
-    a.scale += b.scale;
+    a.grayValue += b.grayValue;
     return a;
   }
 
   dGray & operator -= (dGray & a, const dGray & b)
   {
-    a.scale -= b.scale;
+    a.grayValue -= b.grayValue;
     return a;
   }
 
   dGray & operator /= (dGray & a, const int & b)
   {
-    a.scale /= b;
+    a.grayValue /= b;
     return a;
   }
 
   dGray & operator *= (dGray & a, const double & b)
   {
-    a.scale *= b;
+    a.grayValue *= b;
     return a;
   }
 
   dGray & operator /= (dGray& a, const dGray& b)
   {
-    if (b.scale == 0.0)
+    if (b.grayValue == 0.0)
       throw("division with 0, exiting");
-    a.scale /= b.scale;
+    a.grayValue /= b.grayValue;
     return a;
   }
 
   /// Find the maximum color level of a double rgb pixel.
   int lMax(dGray point)
   {
-    return(int)(max(-point.scale, point.scale));
+    return(int)(max(-point.grayValue, point.grayValue));
   }
 
   void dGray::write(char & cr, char & cg, char & cb) const
   {
-    cr = (char)(scale);
-    cg = (char)(scale);
-    cb = (char)(scale);
+    cr = (char)(grayValue);
+    cg = (char)(grayValue);
+    cb = (char)(grayValue);
   }
 
   double dGray::gray() const
   {
-    return scale;
+    return grayValue;
   }
 
   dGray dGray::geomMean(const dGray& a, const dGray& b)
   {
-    return dGray(sqrt(a.scale * b.scale));
+    return dGray(sqrt(a.grayValue * b.grayValue));
   }
 
   //void dGray::piecewiseDiv(dGray& a, const dGray& b)
   //{
-  //  if (b.scale == 0.0)
+  //  if (b.grayValue == 0.0)
   //    throw("division with 0, exiting");
-  //  a.scale /= b.scale;
+  //  a.grayValue /= b.grayValue;
   //  return;
   //}
 

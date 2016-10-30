@@ -74,24 +74,26 @@ int main(int argc_, char** argv_)
   /// image of the next pair.
   
   source1 = *filenames.begin();
-	ppm< pixT > kep1(source1), kep2;
+	ppm< pixT > pic1(source1), pic2;
   std::string name1(*filenames.begin());
 	std::string destination;
   std::string transformationFileName("trans.bin");
   
+  static int forCounter = 0;
   for(std::vector<std::string>::iterator i = filenames.begin() + 1; i != filenames.end(); ++i)
   {
     std::string & name2(*i);
-    kep2 = name2;
-    transformation< ppm<pixT> > goodtraf = findBest(kep1, kep2);
-    std::ofstream out("/tmp/best_tr.txt");
-    goodtraf.write(out);
+    pic2 = name2;
+    transformation< ppm<pixT> > goodtraf = findBest(pic1, pic2);
+    std::ofstream out("/tmp/best_tr.txt", std::ofstream::out | std::ofstream::app);
+    std::string goodtrafWriteComment = "goodtraf in main for (" + std::to_string(forCounter++) + "): ";
+    goodtraf.write(out, goodtrafWriteComment);
     //transformationRecord< pixT > trR(goodtraf, name1, name2);
-    goodtraf(kep2, true, kep1);
+    goodtraf(pic2, true, pic1);
     destination = transformString(name2);
-    kep2.write(destination);
+    pic2.write(destination);
     std::cout << "Wrote " << destination.c_str() << ".\n";
-    kep1 = kep2;
+    pic1 = pic2;
     name1 = name2;
   }
   
@@ -107,12 +109,12 @@ int main(int argc_, char** argv_)
 //    Optimizer opt0(image0, image1);
 //    opt0.setSize(21); // should depend on size
 //    opt0.setMargin(50); // should depend on size
-//    ppm kep3 = opt0.positioner();   // transform of #2
+//    ppm pic3 = opt0.positioner();   // transform of #2
 //    std::string destination(transformString(source2));
-//    kep3.write(destination);
+//    pic3.write(destination);
 //  }
   
-//  ppm kep(source1);
+//  ppm pic(source1);
 
 //  
 //  for(int i=0; i<9; ++i)
@@ -124,13 +126,13 @@ int main(int argc_, char** argv_)
 //    sprintf(buf2 , "/Users/gbohus/Pictures/construction/DSCN%d.ppm", 7325 + i);
 //    source2 = buf2;
 //    destination = transformString(source2);
-//    kep = source1;
-//    kep2 = source2;
-//    Optimizer opt(kep, kep2);
+//    pic = source1;
+//    pic2 = source2;
+//    Optimizer opt(pic, pic2);
 //    opt.setSize(21);
 //    opt.setMargin(50);
-//    kep3 = opt.positioner();
-//    kep3.write(destination);
+//    pic3 = opt.positioner();
+//    pic3.write(destination);
 //  }
 //  return 0;
 }
@@ -139,16 +141,16 @@ int main(int argc_, char** argv_)
   using namespace imageRegistration;
   std::string source1 = "D:/Projects/ImageRegistration/ImageRegistration/construction/DSCN7376.ppm";
   std::string source2 = "D:/Projects/ImageRegistration/ImageRegistration/construction/DSCN7377.ppm";
-  ppm kep(source1);
+  ppm pic(source1);
   
   
-  ppm kep2(source2);
+  ppm pic2(source2);
   
-  transformation goodtraf = findBest(kep, kep2);
+  transformation goodtraf = findBest(pic, pic2);
   
   goodtraf.getTraf();
   
-  goodtraf(kep2).write("D:/Projects/ImageRegistration/ImageRegistration/construction/0DSCN73760.ppm");
+  goodtraf(pic2).write("D:/Projects/ImageRegistration/ImageRegistration/construction/0DSCN73760.ppm");
   
   return 0;
 }

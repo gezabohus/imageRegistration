@@ -108,7 +108,7 @@ namespace imageRegistration
     //~ppm();
     ~ppm() {}
 
-    //ppm operator = (const ppm & osKep);
+    //ppm operator = (const ppm & sourcePic);
     /// Read image data from filename_
     //void operator= (const std::string & filename_);
     void operator= (const std::string & filename_)
@@ -369,8 +369,8 @@ namespace imageRegistration
       _numLevels = numIter;
       _pics.resize(numIter);
       _pics[0] = &image_;
-      scale();
-      writeAll(image_.getName());
+      createScale();
+      //writeAll(image_.getName(), "scaling");
     }
 
     ppmArray() {}
@@ -378,8 +378,8 @@ namespace imageRegistration
     ~ppmArray() {}
 
     /// Create all(!) scaled down versions of the original.
-    //void scale();
-    void scale()
+    //void createScale();
+    void createScale()
     {
       for (size_t i = 0; i < _numLevels - 1; ++i)
       {
@@ -390,20 +390,20 @@ namespace imageRegistration
 
     PictureT getPic(size_t which_) const { return *_pics[which_]; }
     size_t getNumLevels() const { return _numLevels; }
-    void picToFile(size_t which_, const std::string & filename_) { (*_pics[which_]).write(filename_); }
+    void picToFile(size_t which_, const std::string & filename_) const { _pics[which_]->write(filename_); }
     const PictureT & getLastPic() const { return *_pics[_numLevels - 1]; }
     /// For debugging purposes.
     //void writeAll() const;
-    void writeAll(const std::string &prefix) const
+    void writeAll(const std::string &prefix = "", const std::string &postfix = "debugged") const
     {
       //char buffer[500];
       for (int k = 0; k < _pics.size(); ++k)
       {
         std::stringstream fns;
-        fns<< "./tmp/dummy-" << k << "_" << prefix << ".ppm";
+        fns<< "/tmp/" << k << "_" << prefix << "_" << postfix << ".ppm";
         //std::string fileName(buffer);
         std::string fileName = fns.str().c_str();
-        _pics[k]->write(fileName);
+        picToFile(k, fileName);
       }
     }
 
